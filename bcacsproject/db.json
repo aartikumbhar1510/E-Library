@@ -13,11 +13,19 @@
       "postId": 1
     }
   ],
-  "user": {
+  "user": [{
     "id": 1,
     "name":"Aarti Kumbhar",
     "email": "aartikumbhar152003@gmail.com",
     "password": "admin",
     "role": "student"
+  },
+  {
+    "id": 2,
+    "name":"admin",
+    "email": "admin@gmail.com",
+    "password": "admin",
+    "role": "admin"
   }
+]
 }
