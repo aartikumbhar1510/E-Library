@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   inputdata = new ILoginInfo();
   ErrorMessage !: string;
 
+ 
+
   constructor(private fb: FormBuilder, private loginService: LoginService, private _rtr: Router) { }
 
   ngOnInit(): void {
@@ -25,16 +27,15 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     })
   }
-  get email() { return this.frmlogin.get('email'); }
+  
   login() {
     this.inputdata.email = this.frmlogin.value.email;
-    this.inputdata.password = this.frmlogin.value.password;
-    console.warn(this.inputdata);
+    this.inputdata.password = this.frmlogin.value.password;  
 
 
 
     this.loginService.getUsers().subscribe(result => {
-      const user = result.find((el: any) => {
+      const user = result.filter((el: any) => {
         return el.email === this.inputdata.email && el.password === this.inputdata.password
       });
       if (user) {
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', user.role)
         if (jwtToken) {
           const role = localStorage.getItem('role')
-          if (role == "user") {
+          if (role == "student") {
             this.frmlogin.reset();
             this._rtr.navigate(['dashboard']);
           } else {

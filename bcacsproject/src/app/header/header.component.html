@@ -1,0 +1,50 @@
+<nav *ngIf="isAdmin" class="navbar navbar-expand-sm bg-success navbar-dark" id="navid">
+    <a class="navbar-brand" routerLink="/dashboard"> Task Manager </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse cst-r-float" id="mynav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin-dash">Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+            </li>
+           
+            
+        </ul>
+
+        <!-- <form class="form-inline my-2 my-lg-0" >
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text cust-hgt" id="search"><i class="fa fa-search"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Search" #searchtxt/>
+                <button class="btn btn-warning my-2 my-sm-0" type="button" (click)="onSearchBtnClick(searchtxt.value)">Search</button>
+            </div>
+        </form> -->
+<div>
+    <span>Welcome <small>&nbsp;{{LoggedInUser}}</small></span>
+</div>
+        
+        <div >
+            <button type="button" class="btn btn-warning mr-3" (click)="Logout()" data-toggle="tooltip" data-placement="top" title="LogOut">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </button>
+            
+          </div>
+        
+    </div>
+</nav>
+
+<div class="container-fluid">
+   <router-outlet></router-outlet>
+</div>
+
+
+
+

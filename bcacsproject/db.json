@@ -15,7 +15,9 @@
   ],
   "user": {
     "id": 1,
-    "username": "admin@gmail.com",
-    "password":"admin"
+    "name":"Aarti Kumbhar",
+    "email": "aartikumbhar152003@gmail.com",
+    "password": "admin",
+    "role": "student"
   }
 }
