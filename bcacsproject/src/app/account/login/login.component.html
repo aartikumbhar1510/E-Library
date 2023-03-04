@@ -1,1 +1,36 @@
-<p>login works!</p>
+
+
+<div class="card" style="margin-left: 25%; margin-right: 25%;margin-top: 10%;">
+    <div class="card-header">
+     Employee Login
+  </div>
+    <div class="card-body">
+      <div class="row md-col-6">
+        <form [formGroup]="frmlogin" (ngSubmit)="login()">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter email" formControlName="email">
+  
+              
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <br/>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password" required>
+           
+          </div>
+          <br/>
+          <!-- Submit button -->
+          &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-warning btn-lg mb-4" style="width: 35% !important;">Sign In</button>
+          &nbsp;&nbsp;&nbsp;<button type="reset" class="btn btn-warning btn-lg mb-4" style="width: 35% !important;">Cancel</button>
+    
+          <!-- Register buttons -->
+          <div>
+            <p>Don't have an account ? <a routerLink="/account/register" class="btn btn-warning btn-sm">Sign Up</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
