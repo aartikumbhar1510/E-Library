@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
             this._rtr.navigate(['student-dashboard']);
           } else {
             this.frmlogin.reset();
-            this._rtr.navigate(['dashboard']);
+            this._rtr.navigate(['student-dashboard']);
           }
         }
 
