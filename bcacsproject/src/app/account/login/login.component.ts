@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
 
     this.loginService.getUsers().subscribe(result => {
-      const user = result.filter((el: any) => {
+      const user = result.find((el: any) => {
         return el.email === this.inputdata.email && el.password === this.inputdata.password
       });
       if (user) {

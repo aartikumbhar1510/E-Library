@@ -13,19 +13,26 @@
       "postId": 1
     }
   ],
-  "user": [{
-    "id": 1,
-    "name":"Aarti Kumbhar",
-    "email": "aartikumbhar152003@gmail.com",
-    "password": "admin",
-    "role": "student"
-  },
-  {
-    "id": 2,
-    "name":"admin",
-    "email": "admin@gmail.com",
-    "password": "admin",
-    "role": "admin"
-  }
-]
+  "user": [
+    {
+      "id": 1,
+      "name": "Aarti Kumbhar",
+      "email": "aartikumbhar152003@gmail.com",
+      "password": "admin",
+      "role": "student"
+    },
+    {
+      "id": 2,
+      "name": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "role": ""
+    }
+  ]
 }
