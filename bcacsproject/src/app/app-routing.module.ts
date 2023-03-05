@@ -22,7 +22,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'dashboard',
+    path: 'student-dashboard',
     component:  DashboardComponent,
     canActivate:[AuthGuard]
   },

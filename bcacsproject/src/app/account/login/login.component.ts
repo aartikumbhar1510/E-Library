@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           const role = localStorage.getItem('role')
           if (role == "student") {
             this.frmlogin.reset();
-            this._rtr.navigate(['dashboard']);
+            this._rtr.navigate(['student-dashboard']);
           } else {
             this.frmlogin.reset();
             this._rtr.navigate(['dashboard']);

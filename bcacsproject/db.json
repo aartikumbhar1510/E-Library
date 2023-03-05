@@ -33,6 +33,12 @@
       "email": "admin@gmail.com",
       "password": "admin",
       "role": ""
+    },
+    {
+      "id": 4,
+      "email": "lahurajek@gmail.com",
+      "password": "admin",
+      "role": "user"
     }
   ]
 }
