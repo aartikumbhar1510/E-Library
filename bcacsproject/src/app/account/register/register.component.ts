@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.frmSignup = this.fb.group({
-      username: [''],
+      name: [''],
       email: [''],
       password: [''],
       role:['']
@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
     this.loginInfo.email = this.frmSignup.value.email;
     this.loginInfo.password = this.frmSignup.value.password;
     this.loginInfo.role = this.frmSignup.value.role;
+    this.loginInfo.name = this.frmSignup.value.name;
 
     console.warn(this.loginInfo);
 

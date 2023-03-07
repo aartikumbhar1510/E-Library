@@ -1,4 +1,43 @@
 <div *ngIf="!IsAdmin">
-<app-header></app-header>
+    <app-header></app-header>
 </div>
-<p>admin-dashboard works!</p>
+<div class="container">
+    <div class="row col-md-12 col-sm-12 col-lg-12">
+        <div class="col-md-3" *ngFor="let data of datalist">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <span>Card - {{data.id}}</span>
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive">
+                        <tr>
+                            <td>Name</td>
+                            <td>{{data.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td style="display:inline-flex;">{{data.email}}</td>
+                        </tr>
+                        <tr>
+
+                            <td>Role</td>
+                            <td>{{data.role}}</td>
+                        </tr>
+                        <tr>
+
+                            <td>Password</td>
+                            <td>{{data.password}}</td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="card-footer">
+                    <span>{{data.role}}</span>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

@@ -3,6 +3,6 @@ export class ILoginInfo {
     email: String | undefined;
     password: String | undefined;
     token: String | undefined;
-    username: string | undefined;
+    name: string | undefined;
     role:string|undefined;
 }

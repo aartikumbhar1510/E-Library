@@ -30,15 +30,31 @@
     },
     {
       "id": 3,
-      "email": "admin@gmail.com",
-      "password": "admin",
-      "role": ""
+      "email": "abcd@gmail.com",
+      "password": "student",
+      "role": "student",
+      "name": "abcd"
     },
     {
       "id": 4,
-      "email": "lahurajek@gmail.com",
+      "name": "Aarti Kumbhar",
+      "email": "aartikumbhar152003@gmail.com",
       "password": "admin",
-      "role": "user"
+      "role": "student"
+    },
+    {
+      "id": 5,
+      "name": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": 6,
+      "email": "abcd@gmail.com",
+      "password": "student",
+      "role": "student",
+      "name": "abcd"
     }
   ]
 }
