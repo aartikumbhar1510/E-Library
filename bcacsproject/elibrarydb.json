@@ -1,8 +1,8 @@
 {
-  "posts": [
+  "books": [
     {
       "id": 1,
-      "title": "json-server",
+      "title": "Adv. Java",
       "author": "typicode"
     }
   ],
