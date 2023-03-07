@@ -26,7 +26,7 @@ export class HeaderComponent {
   }
 
   Logout() {
-    console.warn(this._rtr);
+    localStorage.clear();
     this._rtr.navigate(['account/login']);
     
   }
