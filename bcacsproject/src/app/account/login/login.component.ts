@@ -45,12 +45,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', user.role)
         if (jwtToken) {
           const role = localStorage.getItem('role')
+          console.warn(role);
           if (role == "student") {
             this.frmlogin.reset();
             this._rtr.navigate(['student-dashboard']);
           } else {
             this.frmlogin.reset();
-            this._rtr.navigate(['student-dashboard']);
+            this._rtr.navigate(['admin-dashboard']);
           }
         }
 

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagenotfoundComponent } from './Shared/Error/pagenotfound/pagenotfound.component';
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'student-dashboard',
     component:  DashboardComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'admin-dashboard',
+    component:  AdminDashboardComponent,
     canActivate:[AuthGuard]
   },
   {
