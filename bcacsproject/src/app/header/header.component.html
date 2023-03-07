@@ -1,37 +1,64 @@
-<nav *ngIf="isAdmin" class="navbar navbar-expand-sm bg-success navbar-dark" id="navid">
-    <a class="navbar-brand" routerLink="/student-dashboard" style="margin-left: 1%;"> E-Library </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse cst-r-float" id="mynav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/student-dashboard">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/admin-dashboard" title="Place your books order">Book Order</a>
-            </li>
-            
-            
-        </ul>
-    </div>
+<div *ngIf="!isAdmin">
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark" id="navid">
+        <a class="navbar-brand" routerLink="/student-dashboard" style="margin-left: 1%;"> E-Library </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse cst-r-float" id="mynav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/student-dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/student-dashboard" title="Place your books order">Book Order</a>
+                </li>
 
-<div style="float: right; margin-right: 2%;">
-    <span>Welcome <small>&nbsp;{{LoggedInUser}}</small></span>
-</div>
-        
-        <div >
-            <button type="button" class="btn btn-warning mr-3" (click)="Logout()" data-toggle="tooltip" data-placement="top" title="LogOut">
+
+            </ul>
+        </div>
+
+        <div style="float: right; margin-right: 2%;">
+            <span>Welcome <small>&nbsp;{{LoggedInUser}}</small></span>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-warning mr-3" (click)="Logout()" data-toggle="tooltip"
+                data-placement="top" title="LogOut">
                 <i class="fas fa-sign-out"></i>
-              </button>
-            
-          </div>
-        
-   
-</nav>
+            </button>
+
+        </div>
+    </nav>
+</div>
+<div *ngIf="isAdmin">
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark" id="navid">
+        <a class="navbar-brand" routerLink="/student-dashboard" style="margin-left: 1%;"> E-Library </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse cst-r-float" id="mynav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/student-dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin-dashboard" title="Place your books order">Show Order</a>
+                </li>
 
 
+            </ul>
+        </div>
 
+        <div style="float: right; margin-right: 2%;">
+            <span>Welcome <small>&nbsp;{{LoggedInUser}}</small></span>
+        </div>
 
+        <div>
+            <button type="button" class="btn btn-warning mr-3" (click)="Logout()" data-toggle="tooltip"
+                data-placement="top" title="LogOut">
+                <i class="fas fa-sign-out"></i>
+            </button>
 
-
+        </div>
+    </nav>
+</div>

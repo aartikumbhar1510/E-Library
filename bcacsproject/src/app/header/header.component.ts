@@ -10,10 +10,17 @@ export class HeaderComponent {
   isAdmin=true ;
   sidebarExpanded = true;
   LoggedInUser :any|undefined;
+  LoggedInRole : any|undefined;
   constructor(private _rtr: Router) { }
 
   ngOnInit(): void {
     this.LoggedInUser = localStorage.getItem('username');
+    this.LoggedInRole = localStorage.getItem('role');
+    if(this.LoggedInRole=='admin'){
+      this.isAdmin =true;
+    }else{
+      this.isAdmin =false;
+    }
     
     console.warn(this.LoggedInUser);
   }
