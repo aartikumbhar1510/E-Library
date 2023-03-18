@@ -11,11 +11,7 @@ export class AdminDashboardComponent implements OnInit {
   loginUserRole: any;
   datalist!: any[];
   IsAdmin = false;
-
-
   constructor(private _adservice: AdmindashboardService) {
-
-
   }
 
   ngOnInit(): void {

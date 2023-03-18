@@ -56,5 +56,11 @@
       "role": "student",
       "name": "abcd"
     }
+  ],
+  "Books":[
+    {"id":1,"title":"Adv. Java","author":"Oracle","edition":1,"genres":"Technology","qty":10,"status":"Available"},
+    {"id":2,"title":"Adv. Java","author":"Oracle","edition":1,"genres":"Technology","qty":10,"status":"Available"},
+    {"id":3,"title":"Adv. Java","author":"Oracle","edition":1,"genres":"Technology","qty":10,"status":"Available"},
+    {"id":4,"title":"Adv. Java","author":"Oracle","edition":1,"genres":"Technology","qty":10,"status":"Available"}
   ]
 }
