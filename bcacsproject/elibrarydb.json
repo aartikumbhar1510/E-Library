@@ -58,9 +58,9 @@
     }
   ],
   "Books":[
-    {"id":1,"title":"Adv. Java","author":"Oracle","edition":1,"genres":"Technology","qty":10,"status":"Available"},
-    {"id":2,"title":"Adv. Java","author":"Oracle","edition":1,"genres":"Technology","qty":10,"status":"Available"},
-    {"id":3,"title":"Adv. Java","author":"Oracle","edition":1,"genres":"Technology","qty":10,"status":"Available"},
-    {"id":4,"title":"Adv. Java","author":"Oracle","edition":1,"genres":"Technology","qty":10,"status":"Available"}
+    {"id":1,"title":"Java","author":"Sun","edition":1,"genres":"Technology","qty":10,"status":"Available"},
+    {"id":2,"title":"PHP","author":"php.org","edition":5,"genres":"Technology","qty":10,"status":"Available"},
+    {"id":3,"title":"Angular","author":"Google","edition":6,"genres":"Technology","qty":10,"status":"Available"},
+    {"id":4,"title":"DevOps","author":"Microsoft","edition":11,"genres":"Technology","qty":10,"status":"Available"}
   ]
 }

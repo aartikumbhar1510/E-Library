@@ -10,19 +10,29 @@ import { BookService } from '../Shared/Services/book.service';
 export class DashboardComponent implements OnInit {
 
   booksList: Ibooks[] | undefined;
-  constructor(private _booksService :BookService) {
+  booksListData: Ibooks[] | undefined;
+  searchText!: string;
+  constructor(private _booksService: BookService) {
 
 
   }
   ngOnInit(): void {
-   this.getAvailableBooks();
+    this.getAvailableBooks();
   }
 
-  getAvailableBooks()
-  {
-    this._booksService.getAvailableBooks().subscribe(data=>{
-      this.booksList=data;
+  getAvailableBooks() {
+    this._booksService.getAvailableBooks().subscribe(data => {
+      this.booksList = data;
+      this.booksListData = data;
       console.warn(data);
+    })
+  }
+
+  onSearchBooks(searchValue: string) {
+    this.searchText = searchValue;
+    this.booksListData = this.booksList?.filter((item)=>{
+      const regex = new RegExp(this.searchText,"i");
+      return regex.test(item.title)||regex.test(item.author)||regex.test(item.genres);
     })
   }
 }
