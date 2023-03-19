@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   signup() {
-    this.loginInfo.id = 0;
+    this.loginInfo.uid = 0;
     this.loginInfo.email = this.frmSignup.value.email;
     this.loginInfo.password = this.frmSignup.value.password;
     this.loginInfo.role = this.frmSignup.value.role;

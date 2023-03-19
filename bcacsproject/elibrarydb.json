@@ -1,8 +1,8 @@
 {
-  "posts": [
+  "books": [
     {
       "id": 1,
-      "title": "json-server",
+      "title": "Adv. Java",
       "author": "typicode"
     }
   ],
@@ -15,46 +15,56 @@
   ],
   "user": [
     {
-      "id": 1,
+      "uid": 1,
       "name": "Aarti Kumbhar",
       "email": "aartikumbhar152003@gmail.com",
       "password": "admin",
       "role": "student"
     },
     {
-      "id": 2,
+      "uid": 2,
       "name": "admin",
       "email": "admin@gmail.com",
       "password": "admin",
       "role": "admin"
     },
     {
-      "id": 3,
+      "uid": 3,
       "email": "abcd@gmail.com",
       "password": "student",
       "role": "student",
       "name": "abcd"
     },
     {
-      "id": 4,
+      "uid": 4,
       "name": "Aarti Kumbhar",
       "email": "aartikumbhar152003@gmail.com",
       "password": "admin",
       "role": "student"
     },
     {
-      "id": 5,
+      "uid": 5,
       "name": "admin",
       "email": "admin@gmail.com",
       "password": "admin",
       "role": "admin"
     },
     {
-      "id": 6,
+      "uid": 6,
       "email": "abcd@gmail.com",
       "password": "student",
       "role": "student",
       "name": "abcd"
     }
+  ],
+  "Books":[
+    {"bookid":1,"title":"Java","author":"Sun","edition":1,"genres":"Technology","qty":10,"status":"Available"},
+    {"bookid":2,"title":"PHP","author":"php.org","edition":5,"genres":"Technology","qty":10,"status":"Available"},
+    {"bookid":3,"title":"Angular","author":"Google","edition":6,"genres":"Technology","qty":10,"status":"Available"},
+    {"bookid":4,"title":"DevOps","author":"Microsoft","edition":11,"genres":"Technology","qty":10,"status":"Available"}
+  ],
+  "Orders":[
+    {"odrid":1,"title":"Java","author":"Sun","edition":1,"genres":"Technology","qty":1,"status":"Available"}
+    
   ]
 }

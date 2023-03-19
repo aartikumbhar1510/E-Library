@@ -1,5 +1,5 @@
 export class ILoginInfo {
-    id: number | undefined;
+    uid: number | undefined;
     email: String | undefined;
     password: String | undefined;
     token: String | undefined;

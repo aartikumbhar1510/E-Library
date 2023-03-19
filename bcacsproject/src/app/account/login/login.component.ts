@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   inputdata = new ILoginInfo();
   ErrorMessage !: string;
 
- 
+
 
   constructor(private fb: FormBuilder, private loginService: LoginService, private _rtr: Router) { }
 
@@ -27,14 +27,15 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     })
   }
-  
+
   login() {
     this.inputdata.email = this.frmlogin.value.email;
-    this.inputdata.password = this.frmlogin.value.password;  
+    this.inputdata.password = this.frmlogin.value.password;
 
 
 
     this.loginService.getUsers().subscribe(result => {
+      console.warn(result);
       const user = result.find((el: any) => {
         return el.email === this.inputdata.email && el.password === this.inputdata.password
       });
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', jwtToken);
         localStorage.setItem('username', user.email)
         localStorage.setItem('role', user.role)
+        localStorage.setItem('uid', user.uid)
         if (jwtToken) {
           const role = localStorage.getItem('role')
           console.warn(role);

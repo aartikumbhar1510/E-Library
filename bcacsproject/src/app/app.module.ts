@@ -12,7 +12,6 @@ import { PagenotfoundComponent } from './Shared/Error/pagenotfound/pagenotfound.
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
-import { BreadcrumbComponent } from './Sharer/common/breadcrumb/breadcrumb.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
     PagenotfoundComponent,
     HeaderComponent,
     FooterComponent,
-    BreadcrumbComponent,
     AdminDashboardComponent
   ],
   imports: [
