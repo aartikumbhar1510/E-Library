@@ -1,5 +1,5 @@
 export class Ibooks{
-    id:number=0;
+    bookid:number=0;
     title:string="";
     author:string="";
     edition:string="";

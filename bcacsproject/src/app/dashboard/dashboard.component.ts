@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   booksList: Ibooks[] | undefined;
   booksListData: Ibooks[] | undefined;
   searchText!: string;
+  IsAdmin :boolean = false;
   constructor(private _booksService: BookService) {
 
 

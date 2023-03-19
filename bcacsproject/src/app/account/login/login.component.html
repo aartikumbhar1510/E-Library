@@ -1,6 +1,9 @@
 
 
 <div class="card" style="margin-left: 25%; margin-right: 25%;margin-top: 8%;">
+  <div  *ngIf="flag" style="text-align: center;" class="alert alert-danger">
+    <span>{{responseMsg}}</span>
+  </div>
     <div class="card-header">
     E-Library Login
   </div>
