@@ -7,6 +7,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagenotfoundComponent } from './Shared/Error/pagenotfound/pagenotfound.component';
+import { ShoworderComponent } from './showorder/showorder.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,12 @@ const routes: Routes = [
   {
     path: 'admin-dashboard',
     component:  AdminDashboardComponent,
+    canActivate:[AuthGuard]
+  },
+  
+  {
+    path: 'showorder',
+    component:  ShoworderComponent,
     canActivate:[AuthGuard]
   },
   {

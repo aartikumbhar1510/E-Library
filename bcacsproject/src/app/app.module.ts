@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { ShoworderComponent } from './showorder/showorder.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
     PagenotfoundComponent,
     HeaderComponent,
     FooterComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    ShoworderComponent
   ],
   imports: [
     BrowserModule,
