@@ -6,73 +6,74 @@
 </div>
 <div class="row mt-3">
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="input-group" style="width: 40%; margin-left: 30%;">
-            <input type="text" class="form-control" placeholder="Search">
+      
+          <div class="input-group" style="width: 40%; margin-left: 30%;">
+            <input type="text" class="form-control" placeholder="Search"  value="Search" 
+            [(ngModel)]="searchText" (ngModelChange)="onSearchBooks($event)">
             <div class="input-group-append">
-              <button class="btn btn-secondary" type="button">
-                <i class="fas fa-search"></i>
+              <button class="btn btn-outline-secondary" type="button" disabled>
+                <i class="fa fa-search"></i>
               </button>
             </div>
           </div>
     
     </div>
+
+    
+    
 </div>
+  
+ <div class="mt-1">
+  <div class="table-responsive">    
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#Sr.No</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Edition</th>
+            <th scope="col">Genres</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of booksListData">
+            <th scope="row">{{book.bookid}}</th>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.edition}}</td>
+            <th>{{book.genres}}</th>
+            <td>{{book.qty}}</td>
+            <td>{{book.status}}</td>
+            <td>
+              <button *ngIf="IsAdmin" title="Edit Book Details" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+              </svg></button>&nbsp;
 
-<div class="container">
-    <div class="row col-md-12 col-sm-12 col-lg-12">
-        <div class="col-md-4" *ngFor="let data of datalist">
-            <div class="card mt-3 shadow rounded">
-                <div class="card-header" style="border: 0px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="green" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                      </svg>
-                    <span> &nbsp;{{data.name}}</span>
+              <button title="View Book Details" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+              </svg></button>&nbsp;
 
-                </div>
-                <div class="card-body" style="word-wrap: break-word !important;">
-                    <table class="table table-responsive">                       
-                        <tr>
-                            <td>Email</td>
-                            <td style="word-wrap: break-word;">{{data.email}}</td>
-                        </tr>
-                        <tr>
+           
 
-                            <td>Books</td>
-                            <td>{{data.role}}</td>
-                        </tr>
-                        <tr>
+              <button *ngIf="IsAdmin" title="Remove Book" style="border: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </button>
 
-                            <td>Genres</td>
-                            <td>{{data.role}}</td>
-                        </tr>
-                        <tr>
-                            <td>Issue Date</td>
-                            <td>{{data.password}}</td>
-                        </tr>
-                        <tr>
-                            <td>Submission Date</td>
-                            <td>{{data.password}}</td>
-                        </tr>
-                    </table>
+             
 
-                </div>
-                <div class="card-footer">
-                    <div style="float: right;">
-                    <button type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
-                        <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
-                        <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
-                      </svg>  &nbsp;Approve</button> &nbsp;&nbsp; 
-                      
-                      <button type="button" class="btn btn-outline-danger" title="Reject the order"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                      </svg>&nbsp;Reject</button>
-                </div>
-                </div>
-            </div>
-
-        </div>
-
-
+            </td>
+          </tr>         
+        </tbody>
+      </table>
     </div>
-</div>
+  </div>
+
