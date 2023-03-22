@@ -1,14 +1,13 @@
-
-  <div class="row">
+<div class="row">
     <app-header></app-header>
-  </div>
- 
-  <div class="row mt-3">
+</div>
+
+<div class="row mt-3">
     <div class="col-sm-12 col-md-12 col-lg-12">
       
           <div class="input-group" style="width: 40%; margin-left: 30%;">
             <input type="text" class="form-control" placeholder="Search"  value="Search" 
-            [(ngModel)]="searchText" (ngModelChange)="onSearchBooks($event)">
+            [(ngModel)]="searchText" (ngModelChange)="onSearchBookHistory($event)">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" disabled>
                 <i class="fa fa-search"></i>
@@ -29,30 +28,28 @@
           <tr>
             <th scope="col">#Sr.No</th>
             <th scope="col">Book Name</th>
-            <th scope="col">Author</th>
-            <th scope="col">Edition</th>
-            <th scope="col">Genres</th>
-            <th scope="col">Qty</th>
+            <th scope="col">Author</th>            
+            <th scope="col">Issue Date</th>
+            <th scope="col">Submit Date</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let book of booksListData">
-            <th scope="row">{{book.bookid}}</th>
-            <td>{{book.title}}</td>
-            <td>{{book.author}}</td>
-            <td>{{book.edition}}</td>
-            <th>{{book.genres}}</th>
-            <td>{{book.qty}}</td>
-            <td><div [ngClass]="book.status === 'Available'? 'badge bg-success' : 'badge bg-danger'">{{book.status}}</div></td>
+          <tr *ngFor="let book of OrdersDataList">
+            <th scope="row">{{book.odrid}}</th>
+            <td>{{book.bookName}}</td>
+            <td>{{book.author}}</td>           
+            <th>{{book.issueDate}}</th>
+            <td>{{book.submittedDate}}</td>
+            <td><div [ngClass]="book.status === 'Created' || book.status === 'Approved' ? 'badge bg-success' : 'badge bg-danger'">{{book.status}}</div></td>
             <td>
-              <button *ngIf="IsAdmin" title="Edit Book Details" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <button  title="Edit Order" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
               </svg></button>&nbsp;
 
-              <button title="View Book Details" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+              <button title="View Order Details" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
                 <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
                 <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
@@ -60,18 +57,13 @@
 
            
 
-              <button *ngIf="IsAdmin" title="Remove Book" style="border: none;">
+              <button title="Remove Order" style="border: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                 </svg>
               </button>
-
-              <button  title="New Book Order" style="border: none;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                </svg>
-              </button>
+              
 
             </td>
           </tr>         
@@ -79,4 +71,3 @@
       </table>
     </div>
   </div>
-
