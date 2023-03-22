@@ -59,7 +59,7 @@
   ],
   "Books":[
     {"bookid":1,"title":"Java","author":"Sun","edition":1,"genres":"Technology","qty":10,"status":"Available"},
-    {"bookid":2,"title":"PHP","author":"php.org","edition":5,"genres":"Science","qty":10,"status":"Available"},
+    {"bookid":2,"title":"PHP","author":"php.org","edition":5,"genres":"Science","qty":1,"status":"Unavailable"},
     {"bookid":3,"title":"Angular","author":"Google","edition":6,"genres":"History","qty":10,"status":"Available"},
     {"bookid":4,"title":"DevOps","author":"Microsoft","edition":11,"genres":"Geo","qty":10,"status":"Available"}
   ],

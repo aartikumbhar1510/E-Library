@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { ShoworderComponent } from './showorder/showorder.component';
+import { StatusChartComponent } from './charts/status-chart/status-chart.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ShoworderComponent } from './showorder/showorder.component';
     HeaderComponent,
     FooterComponent,
     AdminDashboardComponent,
-    ShoworderComponent
+    ShoworderComponent,
+    StatusChartComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
