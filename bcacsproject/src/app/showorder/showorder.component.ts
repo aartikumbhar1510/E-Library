@@ -28,8 +28,8 @@ export class ShoworderComponent {
 
       console.warn(userdata)
       if (userdata) {
-        this.datalist = userdata.filter(x=>x.status =="Created" || x.status =="Approved");
-        this.OrdersDataList = userdata.filter(x=>x.status =="Created" || x.status =="Approved");
+        this.datalist = userdata.filter(x=>x.status =="Created");
+        this.OrdersDataList = userdata.filter(x=>x.status =="Created");
       }else{
         this.datalist=[];
       }
