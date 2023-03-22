@@ -1,8 +1,8 @@
 export class ILoginInfo {
     uid: number | undefined;
-    email: String | undefined;
+    email: String ="";
     password: String | undefined;
     token: String | undefined;
-    name: string | undefined;
+    name: string ="";
     role:string|undefined;
 }
