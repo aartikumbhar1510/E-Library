@@ -42,7 +42,7 @@ export class ShoworderComponent {
     this.searchText = searchText;
     this.OrdersDataList = this.datalist?.filter((item)=>{
       const regex = new RegExp(this.searchText,"i");
-      return regex.test(item.studentName)||regex.test(item.status);
+      return regex.test(item.studentName)||regex.test(item.bookName)||regex.test(item.author)||regex.test(item.status);
     })
   }
 
