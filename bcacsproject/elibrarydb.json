@@ -64,10 +64,10 @@
     {"bookid":4,"title":"DevOps","author":"Microsoft","edition":11,"genres":"Geo","qty":10,"status":"Available"}
   ],
   "BooksOrder":[
-    {"odrid":1,"uid":1,"bookid":1,"studentName":"Java","bookName":"Java","author":"Sun","qty":1,"status":"Created","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
-    {"odrid":2,"uid":2,"bookid":2,"studentName":"Java","bookName":"Java","author":"Sun","qty":1,"status":"Approved","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
-    {"odrid":3,"uid":1,"bookid":1,"studentName":"Java","bookName":"Java","author":"Sun","qty":1,"status":"Created","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
-    {"odrid":4,"uid":3,"bookid":1,"studentName":"Java","bookName":"Java","author":"Sun","qty":1,"status":"Rejected","issueDate":"12/03/2023","submittedDate":"19/03/2023"}
+    {"odrid":1,"uid":1,"bookid":1,"studentName":"Aarti Kumbhar","bookName":"ADV. JAVA","author":"Oracle","qty":1,"status":"Created","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
+    {"odrid":2,"uid":2,"bookid":2,"studentName":"Java","bookName":"CORE JAVA","author":"Oracle","qty":1,"status":"Approved","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
+    {"odrid":3,"uid":1,"bookid":1,"studentName":"Lahu Kumbhar","bookName":"ASPNET CORE","author":"Microsoft","qty":1,"status":"Created","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
+    {"odrid":4,"uid":3,"bookid":1,"studentName":"Java","bookName":"ANGULAR 11","author":"Google","qty":1,"status":"Rejected","issueDate":"12/03/2023","submittedDate":"19/03/2023"}
     
   ]
 }
