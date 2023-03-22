@@ -10,3 +10,18 @@
     border-radius: .25rem;
     box-shadow: inset;
 }
+
+.badge {
+    display: flex !important;
+    padding: 0.35em 0.65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    width: 50% !important;
+    height: 25% !important;
+}
