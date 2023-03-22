@@ -50,7 +50,7 @@ export class AdminDashboardComponent implements OnInit {
     this.searchText = searchValue;
     this.booksListData = this.booksList?.filter((item)=>{
       const regex = new RegExp(this.searchText,"i");
-      return regex.test(item.title)||regex.test(item.author)||regex.test(item.genres);
+      return regex.test(item.title)||regex.test(item.author)||regex.test(item.genres)||regex.test(item.status);
     })
   }
 
