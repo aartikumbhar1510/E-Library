@@ -12,18 +12,21 @@
       <input type="text" class="form-control" placeholder="Search" value="Search" [(ngModel)]="searchText"
         (ngModelChange)="onSearchBooks($event)">
       &nbsp;<div class="input-group-append">
-        <button class="btn btn-outline-success" type="button" title="Add new book">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+        <button class="btn btn-outline-success" type="button" title="Add new book" data-bs-toggle="modal"
+          href="#exampleModalToggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
           </svg>
         </button>
       </div>
     </div>
-    
+
 
   </div>
 
-  
+
 
 </div>
 
@@ -50,7 +53,9 @@
           <td>{{book.edition}}</td>
           <th>{{book.genres}}</th>
           <td>{{book.qty}}</td>
-          <td><div [ngClass]="book.status === 'Available'? 'badge bg-success' : 'badge bg-danger'">{{book.status}}</div></td>
+          <td>
+            <div [ngClass]="book.status === 'Available'? 'badge bg-success' : 'badge bg-danger'">{{book.status}}</div>
+          </td>
           <td>
             <button *ngIf="IsAdmin" title="Edit Book Details" style="border: none;"><svg
                 xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-pencil-square"
@@ -88,5 +93,79 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<!--Model opening-->
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Add new book to library</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Book Name</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="Bookname">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="Author" class="col-sm-4 col-form-label">Author</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="inpuAuthortPassword">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="Edition" class="col-sm-4 col-form-label">Edition</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="Edition">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="GenresDataList" class="col-sm-4 col-form-label">Genres</label>
+          <div class="col-sm-8">
+            <input class="form-control" list="datalistOptions" id="GenresDataList"
+              placeholder="Type to search genres...">
+            <datalist id="datalistOptions">
+              <option value="Technology">
+              <option value="Science">
+              <option value="History">
+              <option value="Geography">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="Quantity" class="col-sm-4 col-form-label">Quantity</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="Quantity">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="exampleDataList" class="col-sm-4 col-form-label">Status</label>
+          <div class="col-sm-8">
+            <input class="form-control" list="statusdatalistOptions" id="exampleDataList"
+              placeholder="Type to search status...">
+            <datalist id="statusdatalistOptions">
+              <option value="Available">
+              <option value="Unavailable">
+            </datalist>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+        <button type="reset" class="btn btn-outline-danger">Cancel</button>
+      </div>
+    </div>
   </div>
 </div>

@@ -26,8 +26,7 @@ export class AdminDashboardComponent implements OnInit {
       this.IsAdmin = true;
     }
     this._adservice.getUsers().subscribe(userdata => {
-
-      console.warn(userdata)
+      
       if (userdata) {
         this.datalist = userdata;
       }else{
@@ -42,7 +41,7 @@ export class AdminDashboardComponent implements OnInit {
     this._booksService.getAvailableBooks().subscribe(data => {
       this.booksList = data;
       this.booksListData = data;
-      console.warn(data);
+      
     })
   }
 
