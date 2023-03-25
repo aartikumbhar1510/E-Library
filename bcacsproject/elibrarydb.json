@@ -1,11 +1,5 @@
 {
-  "books": [
-    {
-      "id": 1,
-      "title": "Adv. Java",
-      "author": "typicode"
-    }
-  ],
+  
   "comments": [
     {
       "id": 1,
@@ -57,17 +51,146 @@
       "name": "abcd"
     }
   ],
-  "Books":[
-    {"bookid":1,"title":"Java","author":"Sun","edition":1,"genres":"Technology","qty":10,"status":"Available"},
-    {"bookid":2,"title":"PHP","author":"php.org","edition":5,"genres":"Science","qty":1,"status":"Unavailable"},
-    {"bookid":3,"title":"Angular","author":"Google","edition":6,"genres":"History","qty":10,"status":"Available"},
-    {"bookid":4,"title":"DevOps","author":"Microsoft","edition":11,"genres":"Geo","qty":10,"status":"Available"}
+  "Books": [
+    {
+      "id": 1,
+      "bookid": 1,
+      "title": "Java",
+      "author": "Sun",
+      "edition": 1,
+      "genres": "Technology",
+      "qty": 10,
+      "status": "Available"
+    },
+    {
+      "id": 2,
+      "bookid": 2,
+      "title": "PHP",
+      "author": "php.org",
+      "edition": 5,
+      "genres": "Science",
+      "qty": 1,
+      "status": "Unavailable"
+    },
+    {
+      "id": 3,
+      "bookid": 3,
+      "title": "Angular",
+      "author": "Google",
+      "edition": 6,
+      "genres": "History",
+      "qty": 10,
+      "status": "Available"
+    },
+    {
+      "id": 4,
+      "bookid": 4,
+      "title": "DevOps",
+      "author": "Microsoft",
+      "edition": 11,
+      "genres": "Geo",
+      "qty": 10,
+      "status": "Available"
+    },
+    {
+      "id": 5,
+      "bookid": 5,
+      "title": "Python 5",
+      "author": "Python",
+      "edition": "4",
+      "genres": "Technology",
+      "qty": 10,
+      "status": "Available"
+    },
+    {
+      "id": 6,
+      "bookid": 6,
+      "title": "ASPNET CORE",
+      "author": "Microsoft",
+      "edition": "7",
+      "genres": "Technology",
+      "qty": 10,
+      "status": "Available"
+    },
+    {
+      "id": 7,
+      "bookid": 7,
+      "title": "Science",
+      "author": "Science",
+      "edition": "1",
+      "genres": "Science",
+      "qty": "100",
+      "status": "Available"
+    },
+    {
+      "id": 8,
+      "bookid": 8,
+      "title": "SMC",
+      "author": "Smart Money",
+      "edition": "1",
+      "genres": "Finance",
+      "qty": "10",
+      "status": "Available"
+    },
+    {
+      "id": 9,
+      "bookid": 9,
+      "title": "Price Action 2.0",
+      "author": "Smart Money",
+      "edition": "4",
+      "genres": "Finance",
+      "qty": "10",
+      "status": "Available"
+    }
   ],
-  "BooksOrder":[
-    {"odrid":1,"uid":1,"bookid":1,"studentName":"Aarti Kumbhar","bookName":"ADV. JAVA","author":"Oracle","qty":1,"status":"Created","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
-    {"odrid":2,"uid":2,"bookid":2,"studentName":"Java","bookName":"CORE JAVA","author":"Oracle","qty":1,"status":"Approved","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
-    {"odrid":3,"uid":1,"bookid":1,"studentName":"Lahu Kumbhar","bookName":"ASPNET CORE","author":"Microsoft","qty":1,"status":"Created","issueDate":"12/03/2023","submittedDate":"19/03/2023"},
-    {"odrid":4,"uid":3,"bookid":1,"studentName":"Java","bookName":"ANGULAR 11","author":"Google","qty":1,"status":"Rejected","issueDate":"12/03/2023","submittedDate":"19/03/2023"}
-    
+  "BooksOrder": [
+    {
+      "odrid": 1,
+      "uid": 1,
+      "bookid": 1,
+      "studentName": "Aarti Kumbhar",
+      "bookName": "ADV. JAVA",
+      "author": "Oracle",
+      "qty": 1,
+      "status": "Created",
+      "issueDate": "12/03/2023",
+      "submittedDate": "19/03/2023"
+    },
+    {
+      "odrid": 2,
+      "uid": 2,
+      "bookid": 2,
+      "studentName": "Java",
+      "bookName": "CORE JAVA",
+      "author": "Oracle",
+      "qty": 1,
+      "status": "Approved",
+      "issueDate": "12/03/2023",
+      "submittedDate": "19/03/2023"
+    },
+    {
+      "odrid": 3,
+      "uid": 1,
+      "bookid": 1,
+      "studentName": "Lahu Kumbhar",
+      "bookName": "ASPNET CORE",
+      "author": "Microsoft",
+      "qty": 1,
+      "status": "Created",
+      "issueDate": "12/03/2023",
+      "submittedDate": "19/03/2023"
+    },
+    {
+      "odrid": 4,
+      "uid": 3,
+      "bookid": 1,
+      "studentName": "Java",
+      "bookName": "ANGULAR 11",
+      "author": "Google",
+      "qty": 1,
+      "status": "Rejected",
+      "issueDate": "12/03/2023",
+      "submittedDate": "19/03/2023"
+    }
   ]
 }
