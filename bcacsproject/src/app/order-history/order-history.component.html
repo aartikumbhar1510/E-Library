@@ -1,4 +1,4 @@
-
+<app-header></app-header>
 
 <div class="row mt-3">
     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -35,12 +35,12 @@
         </thead>
         <tbody>
           <tr *ngFor="let book of OrdersDataList">
-            <th scope="row">{{book.odrid}}</th>
-            <td>{{book.bookName}}</td>
-            <td>{{book.author}}</td>           
-            <th>{{book.issueDate}}</th>
-            <td>{{book.submittedDate}}</td>
-            <td><div [ngClass]="book.status === 'Created' || book.status === 'Approved' ? 'badge bg-success' : 'badge bg-danger'">{{book.status}}</div></td>
+            <th scope="row"><div>{{book.odrid}}</div></th>
+            <td><div>{{book.bookName}}</div></td>
+            <td><div>{{book.author}}</div></td>           
+            <td><div>{{book.issueDate}}</div></td>
+            <td><div>{{book.submittedDate}}</div></td>
+            <td><div [ngClass]="onStatusChange(book.status)">{{book.status}}</div></td>
             <td>
               <button  title="Edit Order" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>

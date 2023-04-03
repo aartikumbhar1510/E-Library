@@ -13,6 +13,7 @@ export class OrderHistoryComponent {
   OrdersDataList!: IorderDetails[];
   IsAdmin = false;
   searchText!: string;
+  statusChangeValue !: string;
   constructor(private _orderService: OrderService) {
   }
 
@@ -38,4 +39,13 @@ export class OrderHistoryComponent {
     })
   }
 
+  onStatusChange(statusValue: string) {
+    if (statusValue === "Created") {
+      return this.statusChangeValue = "badge bg-warning";
+    } else if (statusValue === "Rejected") {
+      return this.statusChangeValue = "badge bg-danger";
+    } else {
+      return this.statusChangeValue = "badge bg-success";
+    }
+  }
 }
