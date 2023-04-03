@@ -16,6 +16,8 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { ShoworderComponent } from './showorder/showorder.component';
 import { StatusChartComponent } from './charts/status-chart/status-chart.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderByPipe } from './Shared/pipes/orderBy';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AdminDashboardComponent,
     ShoworderComponent,
     StatusChartComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

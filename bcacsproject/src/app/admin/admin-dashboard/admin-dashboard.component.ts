@@ -13,7 +13,7 @@ import { BookService } from 'src/app/Shared/Services/book.service';
 export class AdminDashboardComponent implements OnInit {
 
   booksList: Ibooks[] | undefined;
-  booksListData: Ibooks[] | undefined;
+  booksListData?: Ibooks[] |undefined;
   searchText!: string;
   loginUserRole: any;
   datalist!: any[];
@@ -25,6 +25,13 @@ export class AdminDashboardComponent implements OnInit {
   frmBook!: FormGroup;
   isShow: boolean = true;
   isEdit: boolean = false;
+
+  // sorting implementation
+  title = "title";
+  order = "desc";
+  dateType = "string";
+
+
   constructor(private _adservice: AdmindashboardService,
     private _booksService: BookService,
     private _fb: FormBuilder,private _rtr:Router,private _actRoute :ActivatedRoute) {
