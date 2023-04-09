@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Constant } from '../Interface/constant';
 import { Ibooks } from '../Interface/Ibooks';
+import { IStockModel } from '../Interface/IStockModel';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,11 @@ export class BookService {
       .pipe(map((data: any) => {
         return data;
       }))
+  }
+
+  getAvailableBookStock(): Observable<IStockModel[]> {
+    return this._http.get<IStockModel[]>(this.baseURL + 'stock').pipe(map((data: IStockModel[]) => {
+      return data;
+    }))
   }
 }

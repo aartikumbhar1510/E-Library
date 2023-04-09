@@ -17,6 +17,7 @@ import { ShoworderComponent } from './showorder/showorder.component';
 import { StatusChartComponent } from './charts/status-chart/status-chart.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { OrderByPipe } from './Shared/pipes/orderBy';
+import{NgChartsModule} from 'ng2-charts';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { OrderByPipe } from './Shared/pipes/orderBy';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

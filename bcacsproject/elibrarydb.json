@@ -90,97 +90,8 @@
       "genres": "Geo",
       "qty": 10,
       "status": "Available"
-    },
-    {
-      "id": 5,
-      "bookid": 5,
-      "title": "Python 5",
-      "author": "Python",
-      "edition": "4",
-      "genres": "Technology",
-      "qty": 10,
-      "status": "Available"
-    },
-    {
-      "id": 6,
-      "bookid": 6,
-      "title": "ASPNET CORE",
-      "author": "Microsoft",
-      "edition": "7",
-      "genres": "Technology",
-      "qty": 10,
-      "status": "Available"
-    },
-    {
-      "id": 7,
-      "bookid": 7,
-      "title": "Science",
-      "author": "Science",
-      "edition": "1",
-      "genres": "Science",
-      "qty": "100",
-      "status": "Available"
-    },
-    {
-      "id": 8,
-      "bookid": 8,
-      "title": "SMC",
-      "author": "Smart Money",
-      "edition": "1",
-      "genres": "Finance",
-      "qty": "10",
-      "status": "Available"
-    },
-    {
-      "id": 9,
-      "bookid": 9,
-      "title": "Price Action 2.0",
-      "author": "Smart Money",
-      "edition": "4",
-      "genres": "Finance",
-      "qty": "10",
-      "status": "Available"
-    },
-    {
-      "id": 10,
-      "bookid": 10,
-      "title": "Python 5",
-      "author": "Python",
-      "edition": "4",
-      "genres": "Science",
-      "qty": "10",
-      "status": "Unavailable"
-    },
-    {
-      "id": 11,
-      "bookid": 11,
-      "title": "SMC",
-      "author": "Smart Money",
-      "edition": "1",
-      "genres": "Finance",
-      "qty": "10",
-      "status": "Unavailable"
-    },
-    {
-      "id": 12,
-      "bookid": 12,
-      "title": "Python 5",
-      "author": "Python",
-      "edition": "1",
-      "genres": "Technology",
-      "qty": "10",
-      "status": "Unavailable"
-    },
-    {
-      "id": 13,
-      "bookid": 13,
-      "title": "SMC",
-      "author": "Price Action",
-      "edition": "1",
-      "genres": "Finance",
-      "qty": "12",
-      "status": "Unavailable"
     }
+  
   ],
   "BooksOrder": [
     {
@@ -230,6 +141,24 @@
       "status": "Rejected",
       "issueDate": "12/03/2023",
       "submittedDate": "19/03/2023"
+    }
+  ],
+  "stock": [
+    {
+      "genres": "Technology",
+      "stock": 70
+    },
+    {
+      "genres": "Finance",
+      "stock": 10
+    },
+    {
+      "genres": "Geo",
+      "stock": 50
+    },
+    {
+      "genres": "History",
+      "stock": 70
     }
   ]
 }
