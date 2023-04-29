@@ -34,23 +34,29 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let book of OrdersDataList">
-            <th scope="row"><div>{{book.odrid}}</div></th>
-            <td><div>{{book.bookName}}</div></td>
-            <td><div>{{book.author}}</div></td>           
-            <td><div>{{book.issueDate}}</div></td>
-            <td><div>{{book.submittedDate}}</div></td>
-            <td><div [ngClass]="onStatusChange(book.status)">{{book.status}}</div></td>
+          <tr *ngFor="let order of OrdersDataList">
+            <th scope="row"><div>{{order.id}}</div></th>
+            <td><div>{{order.bookName}}</div></td>
+            <td><div>{{order.author}}</div></td>           
+            <td><div>{{order.issueDate}}</div></td>
+            <td><div>{{order.submittedDate}}</div></td>
+            <td><div [ngClass]="onStatusChange(order.status)">{{order.status}}</div></td>
             <td>
               <button  title="Edit Order" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
               </svg></button>&nbsp;
 
-              <button title="View Order Details" style="border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
-                <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
-                <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+              <button title="View Book Details" style="border: none;" type="button" title="View Book Details"
+              data-bs-toggle="modal" href="#ViewModalToggle" (click)="onViewBookDeatils(order)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z" />
+                <path
+                  d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z" />
+                <path fill-rule="evenodd"
+                  d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z" />
               </svg></button>&nbsp;
 
            
@@ -69,3 +75,71 @@
       </table>
     </div>
   </div>
+
+
+
+
+  
+<!--view book details  start-->
+<!-- Modal -->
+<div class="modal fade" id="ViewModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><strong>Detail of Order : {{viewBookData.id}}</strong></h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="mb-3 row">
+          <label for="title" class="col-sm-4 col-form-label">Name</label>
+          <div class="col-sm-8 lbl-width" >
+            <label for="title" class="col-sm-4 col-form-label lbl-width">{{viewBookData.studentName}}</label>
+          </div>
+        </div>
+        <div class="mb-3 row ">
+          <label for="Bookname" class="col-sm-4 col-form-label">Book Name</label>
+          <div class="col-sm-8 lbl-width">
+            <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.bookName}}</label>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Auther Name</label>
+          <div class="col-sm-8 lbl-width">
+            <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.author}}</label>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Status</label>
+          <div class="col-sm-8 lbl-width">
+            <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.status}}</label>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Issue Date</label>
+          <div class="col-sm-8 lbl-width">
+            <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.issueDate}}</label>
+          </div>
+        </div>
+
+
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Submitted Date </label>
+          <div class="col-sm-8 lbl-width">
+            <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.submittedDate }}</label>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--view book details  end-->

@@ -18,6 +18,7 @@ import { StatusChartComponent } from './charts/status-chart/status-chart.compone
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { OrderByPipe } from './Shared/pipes/orderBy';
 import{NgChartsModule} from 'ng2-charts';
+import { StudchartComponent } from './studchart/studchart.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import{NgChartsModule} from 'ng2-charts';
     ShoworderComponent,
     StatusChartComponent,
     OrderHistoryComponent,
-    OrderByPipe
+    OrderByPipe,
+    StudchartComponent
   ],
   imports: [
     BrowserModule,

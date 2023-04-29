@@ -17,4 +17,18 @@ export class OrderService {
       return data;
     }))
   }
+
+  getOrderHistoryByOrderID(odrid:any){
+    return this._http.get<any>(this.baseURL + 'BooksOrder/' + odrid)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
+  getOrderHistoryByUserID(uid: any) {
+    return this._http.get<any[]>(this.baseURL + 'BooksOrder?uid=' + uid)
+      .pipe(map((data: any[]) => {
+        return data;
+      }))
+  }
 }

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', jwtToken);
         localStorage.setItem('username', user.email)
         localStorage.setItem('role', user.role)
-        localStorage.setItem('uid', user.uid)
+        localStorage.setItem('uid', user.id)
         if (jwtToken) {
           const role = localStorage.getItem('role')
           console.warn(role);

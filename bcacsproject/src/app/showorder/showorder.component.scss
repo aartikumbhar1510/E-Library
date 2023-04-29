@@ -76,3 +76,14 @@
     border-radius: var(--bs-dropdown-border-radius);
     margin-right: 1px;
 }
+
+
+#mydiv {
+  overflow-y: scroll; /* Adds vertical scrollbar */
+  -ms-overflow-style: none; /* Hides scrollbar in IE */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Chrome and Safari */
+}
