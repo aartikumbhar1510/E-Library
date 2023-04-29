@@ -1,0 +1,9 @@
+.spark{
+    position: absolute;
+    inset: 0;
+    border-radius: 100px;
+    rotate: 0deg;
+    overflow: hidden;
+    mask: linear-gradient(white,transparent 50%);
+    animation: flip calc(var(-- spark)*2) infinite steps(2,end);
+}

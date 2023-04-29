@@ -21,6 +21,7 @@
     "@angular/router": "^15.0.0",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
+    "child_process": "^1.0.2",
     "ng2-charts": "^4.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

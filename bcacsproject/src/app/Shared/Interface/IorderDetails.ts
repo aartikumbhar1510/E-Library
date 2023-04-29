@@ -1,5 +1,5 @@
 export class IorderDetails{
-    odrid:number=0;
+    id:number=0;
     uid:number=0;
     bookid:number=0;
     studentName:string="";

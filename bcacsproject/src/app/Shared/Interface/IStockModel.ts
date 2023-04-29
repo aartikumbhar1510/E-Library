@@ -1,6 +1,7 @@
 export class IStockModel
 {
-    genres?:string;
-    stock?:number;
+    id:number=0;
+    genres:string='';
+    stock:number=0;
 
 }

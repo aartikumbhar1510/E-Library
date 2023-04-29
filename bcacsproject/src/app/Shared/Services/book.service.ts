@@ -50,4 +50,25 @@ export class BookService {
       return data;
     }))
   }
+
+  getBookById(bookid: any) {
+    return this._http.get<any>(this.baseURL + 'Books/' + bookid)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
+
+  updateBookStock(dataParam: IStockModel) {
+    return this._http.put<IStockModel>(this.baseURL + 'stock' + dataParam.id, dataParam.stock)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
+  getAvailableBookStockByGenres(dataParam: string): Observable<IStockModel> {
+    return this._http.get<IStockModel>(this.baseURL + 'stock/' + dataParam).pipe(map((data: IStockModel) => {
+      return data;
+    }))
+  }
 }

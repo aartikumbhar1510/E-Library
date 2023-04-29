@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IorderDetails } from '../Shared/Interface/IorderDetails';
 import { OrderService } from '../Shared/Services/order.service';
+import { BookService } from '../Shared/Services/book.service';
+import { Ibooks } from '../Shared/Interface/Ibooks';
 
 @Component({
   selector: 'app-order-history',
@@ -8,19 +10,23 @@ import { OrderService } from '../Shared/Services/order.service';
   styleUrls: ['./order-history.component.scss']
 })
 export class OrderHistoryComponent {
-  loginUserRole: any;
+  loginUserId: any;
   datalist!: IorderDetails[];
   OrdersDataList!: IorderDetails[];
   IsAdmin = false;
   searchText!: string;
   statusChangeValue !: string;
-  constructor(private _orderService: OrderService) {
+  viewBookData: IorderDetails = new IorderDetails();
+  OrdersDataListByUser!: IorderDetails[];
+  constructor(private _orderService: OrderService, private _booksService: BookService) {
   }
 
   ngOnInit(): void {
-    this.loginUserRole = localStorage.getItem('role');
+    this.loginUserId = localStorage.getItem('uid');
 
-    this._orderService.getAvailableBooks().subscribe(data => {
+    console.warn(this.loginUserId)
+
+    this._orderService.getOrderHistoryByUserID(this.loginUserId).subscribe(data => {
       if (data) {
         this.datalist = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
         this.OrdersDataList = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
@@ -29,6 +35,8 @@ export class OrderHistoryComponent {
       }
     });
 
+
+    this.getOrderHistoryByUserID();
   }
 
   onSearchBookHistory(searchValue: string) {
@@ -47,5 +55,21 @@ export class OrderHistoryComponent {
     } else {
       return this.statusChangeValue = "badge bg-success";
     }
+  }
+
+
+
+  onViewBookDeatils(order: any) {
+    console.warn(order)
+    this.viewBookData = order;
+  }
+
+
+  getOrderHistoryByUserID() {
+    this.loginUserId=2
+    this._orderService.getOrderHistoryByUserID(this.loginUserId).subscribe((data: any[])=>{
+      this.OrdersDataListByUser = data;
+      console.warn(data)
+    })
   }
 }
