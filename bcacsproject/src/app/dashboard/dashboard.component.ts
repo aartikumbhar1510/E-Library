@@ -19,11 +19,13 @@ export class DashboardComponent implements OnInit {
   isEdit: boolean = false;
   viewBookData : Ibooks= new Ibooks();
   OrderFrm! :FormGroup;
+  loggedInUser:any;
   constructor(private _booksService: BookService, private _fb: FormBuilder) {
 
 
   }
   ngOnInit(): void {
+    this.loggedInUser = localStorage.getItem('username');
     this.BookOrderFrm = this._fb.group({
       bookid: [''],
       title: [''],
@@ -59,6 +61,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onOrderBookAction(book : any){
+    this.OrderFrm.controls['studentName'].setValue(this.loggedInUser);
     this.OrderFrm.controls['bookName'].setValue(book.title);
     this.OrderFrm.controls['author'].setValue(book.author);
     this.OrderFrm.controls['bookid'].setValue(book.bookid);
