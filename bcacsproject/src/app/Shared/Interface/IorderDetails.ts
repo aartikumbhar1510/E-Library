@@ -5,8 +5,11 @@ export class IorderDetails{
     studentName:string="";
     bookName :string=""; 
     author:string="";
-    status:string="";   
+    status:string=""; 
+    remark:string="";  
     issueDate :Date=new Date();
     submittedDate :Date=new Date();
+    qty:number=0;
+    orderId:string="";
 
 }

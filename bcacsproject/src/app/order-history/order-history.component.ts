@@ -3,6 +3,9 @@ import { IorderDetails } from '../Shared/Interface/IorderDetails';
 import { OrderService } from '../Shared/Services/order.service';
 import { BookService } from '../Shared/Services/book.service';
 import { Ibooks } from '../Shared/Interface/Ibooks';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Constant } from '../Shared/Interface/constant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-history',
@@ -18,27 +21,35 @@ export class OrderHistoryComponent {
   statusChangeValue !: string;
   viewBookData: IorderDetails = new IorderDetails();
   OrdersDataListByUser!: IorderDetails[];
-  constructor(private _orderService: OrderService, private _booksService: BookService) {
+  updateOrderFrm!: FormGroup;
+  updateFormData: IorderDetails = new IorderDetails();
+  constructor(private _orderService: OrderService, private _booksService: BookService, private _fb: FormBuilder,
+    private _rtr: Router) {
   }
 
   ngOnInit(): void {
     this.loginUserId = localStorage.getItem('uid');
 
-    console.warn(this.loginUserId)
-
-    this._orderService.getOrderHistoryByUserID(this.loginUserId).subscribe(data => {
-      if (data) {
-        this.datalist = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
-        this.OrdersDataList = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
-      } else {
-        this.datalist = [];
-      }
-    });
-
-
+    this.formInitilization();
     this.getOrderHistoryByUserID();
   }
 
+  formInitilization() {
+    this.updateOrderFrm = this._fb.group({
+      id: [''],
+      uid: [''],
+      bookid: [''],
+      studentName: [''],
+      bookName: [''],
+      author: [''],
+      qty: [''],
+      status: [''],
+      remark: [''],
+      issueDate: [''],
+      submittedDate: [''],
+      orderId: ['']
+    });
+  }
   onSearchBookHistory(searchValue: string) {
     this.searchText = searchValue;
     this.OrdersDataList = this.datalist?.filter((item) => {
@@ -66,10 +77,59 @@ export class OrderHistoryComponent {
 
 
   getOrderHistoryByUserID() {
-    this.loginUserId=2
-    this._orderService.getOrderHistoryByUserID(this.loginUserId).subscribe((data: any[])=>{
-      this.OrdersDataListByUser = data;
-      console.warn(data)
+
+    this._orderService.getOrderHistoryByUserID(this.loginUserId).subscribe((data: any[]) => {
+      if (data) {
+        this.datalist = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
+        this.OrdersDataList = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
+      } else {
+        this.datalist = [];
+      }
+    })
+  }
+
+  onEditBtnAction(selectedRowData: any) {
+    console.warn(selectedRowData)
+    this.updateOrderFrm.setValue(selectedRowData);
+  }
+
+
+  updateOrderDetailsAction() {
+    this.updateFormData.id = this.updateOrderFrm.value.id;
+
+    this.updateFormData.bookid = this.updateOrderFrm.value.bookid;
+    this.updateFormData.uid = this.updateOrderFrm.value.uid;
+    this.updateFormData.studentName = this.updateOrderFrm.value.studentName;
+    this.updateFormData.bookName = this.updateOrderFrm.value.bookName;
+    this.updateFormData.orderId = this.updateOrderFrm.value.orderId;
+    this.updateFormData.author = this.updateOrderFrm.value.author;
+    this.updateFormData.qty = Number(this.updateOrderFrm.value.qty);
+    this.updateFormData.status = Constant.CREATED
+    this.updateFormData.remark = "";
+    this.updateFormData.issueDate = this.updateOrderFrm.value.issueDate;;
+    this.updateFormData.submittedDate = this.updateOrderFrm.value.submittedDate;
+
+    console.warn(this.updateFormData);
+    this._orderService.updateOrder(this.updateFormData).subscribe((data: any) => {
+      if (data) {
+        this.getOrderHistoryByUserID();
+        this.closeAndRedirect()
+      }
+    });
+  }
+
+
+  closeAndRedirect() {
+
+    this._rtr.navigate(['/order-history']);
+  }
+
+  onDeleteAction(selectedRowData :any) {
+    this._orderService.deleteOrder(selectedRowData.id).subscribe((data: any) => {
+      if (data) {
+        this.getOrderHistoryByUserID();
+        this.closeAndRedirect()
+      }
     })
   }
 }

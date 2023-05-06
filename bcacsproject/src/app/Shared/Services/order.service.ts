@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Constant } from '../Interface/constant';
+import { IorderDetails } from '../Interface/IorderDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,22 @@ export class OrderService {
       .pipe(map((data: any[]) => {
         return data;
       }))
+  }
+
+  getTotalOrderCount(){
+    return this._http.get<any[]>(this.baseURL+'BooksOrder').pipe(map((data:any[])=>{
+      return data;
+    }))
+  }
+
+  placeNewOrder(inputParam:IorderDetails){
+    return this._http.post<any>(this.baseURL+'BooksOrder', inputParam)
+  }
+
+  updateOrder(inputParam:IorderDetails){   
+    return this._http.put(`${this.baseURL}BooksOrder/${inputParam.id}`, inputParam);
+  }
+  deleteOrder(id: number): Observable<any> {
+    return this._http.delete(`${this.baseURL}BooksOrder/${id}`);
   }
 }

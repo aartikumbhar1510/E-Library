@@ -59,8 +59,8 @@ export class BookService {
   }
 
 
-  updateBookStock(dataParam: IStockModel) {
-    return this._http.put<IStockModel>(this.baseURL + 'stock' + dataParam.id, dataParam.stock)
+  updateBookStock(dataParam: Ibooks) {
+    return this._http.put<Ibooks>(this.baseURL + 'Books?id=' + dataParam.id, dataParam.qty)
       .pipe(map((data: any) => {
         return data;
       }))
@@ -68,6 +68,18 @@ export class BookService {
 
   getAvailableBookStockByGenres(dataParam: string): Observable<IStockModel> {
     return this._http.get<IStockModel>(this.baseURL + 'stock/' + dataParam).pipe(map((data: IStockModel) => {
+      return data;
+    }))
+  }
+
+  getAvailableBooksStock(): Observable<IStockModel[]> {
+    return this._http.get<IStockModel[]>(this.baseURL + 'stock').pipe(map((data: IStockModel[]) => {
+      return data;
+    }))
+  }
+
+  getStockByGenres(): Observable<any[]>{
+    return this._http.get<any[]>(this.baseURL + 'Books' ).pipe(map((data: any[]) => {
       return data;
     }))
   }
