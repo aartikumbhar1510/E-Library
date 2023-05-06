@@ -1,12 +1,12 @@
 <app-header></app-header>
 <div class="row mt-3">
   <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="input-group-append">
+      <div class="input-group" style="width: 30%; margin-left: 69%;">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText"
+          (ngModelChange)="onSearchBooks($event)" placeholder="Search by Bookname,Author,Genres,Status">
 
-    <div class="input-group" style="width: 30%; margin-left: 69%;">
-      <input type="text" class="form-control" placeholder="Search" value="Search" [(ngModel)]="searchText"
-        (ngModelChange)="onSearchBooks($event)">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" disabled>
+        <button class="btn btn-secondary" type="button" disabled>
           <i class="fa fa-search"></i>
         </button>
       </div>
@@ -47,7 +47,8 @@
           </td>
           <td>
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdroporder" title="Book Order" (click)="onOrderBookAction(book)">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdroporder"
+              title="Book Order" (click)="onOrderBookAction(book)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-cart-check-fill" viewBox="0 0 16 16">
                 <path
@@ -57,7 +58,8 @@
 
             &nbsp;
             <button title="View Book Details" style="border: none;" type="button" title="View Book Details"
-              data-bs-toggle="modal" href="#ViewModalToggle" (click)="onViewBookDeatils(book)" class="btn btn-warning">
+              data-bs-toggle="modal" data-bs-target="#ViewModalToggle" (click)="onViewBookDeatils(book)"
+              class="btn btn-warning">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -169,7 +171,7 @@
 <!--view book details  start-->
 <!-- Modal -->
 <div class="modal fade" id="ViewModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
-  data-backdrop="static">
+  data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -182,32 +184,32 @@
         <div class="mb-3 row">
           <label for="title" class="col-sm-4 col-form-label">Book Name</label>
           <div class="col-sm-8">
-            <label for="title" class="col-sm-4 col-form-label">{{viewBookData.title}}</label>
+            <label for="title" class="col-sm-8 col-form-label">{{viewBookData.title}}</label>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="Bookname" class="col-sm-4 col-form-label">Author</label>
           <div class="col-sm-8">
-            <label for="Bookname" class="col-sm-4 col-form-label">{{viewBookData.author}}</label>
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.author}}</label>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="Bookname" class="col-sm-4 col-form-label">Genres</label>
           <div class="col-sm-8">
-            <label for="Bookname" class="col-sm-4 col-form-label">{{viewBookData.genres}}</label>
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.genres}}</label>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="Bookname" class="col-sm-4 col-form-label">Edition</label>
           <div class="col-sm-8">
-            <label for="Bookname" class="col-sm-4 col-form-label">{{viewBookData.edition}}</label>
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.edition}}</label>
           </div>
         </div>
 
         <div class="mb-3 row">
           <label for="Bookname" class="col-sm-4 col-form-label">Status</label>
           <div class="col-sm-8">
-            <label for="Bookname" class="col-sm-4 col-form-label">{{viewBookData.status}}</label>
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.status}}</label>
           </div>
         </div>
 
@@ -229,8 +231,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade margin-10" id="staticBackdroporder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdroporderLabel" aria-hidden="true">
+<div class="modal margin-10" id="staticBackdroporder" tabindex="-1" aria-labelledby="staticBackdroporderLabel"
+  aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -240,17 +242,17 @@
       <div class="modal-body">
         <form [formGroup]="OrderFrm">
           <div class="row">
-            
+
             <div class="col">
               <label for="">Name</label>
-              <input type="text" class="form-control" placeholder="Name" formControlName="studentName">
+              <input type="text" class="form-control" placeholder="Name" formControlName="studentName" readonly>
             </div>
             <div class="col">
               <label for="">Book Name</label>
               <input type="text" class="form-control" placeholder="" formControlName="bookName" readonly>
             </div>
           </div> <br>
-          <div class="row">           
+          <div class="row">
             <div class="col">
               <label for="">Author</label>
               <input type="text" class="form-control" placeholder="" formControlName="author" readonly>
@@ -268,11 +270,14 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
-          <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-        </svg> &nbsp;Place Order</button>
+        <button type="submit" class="btn btn-success" (click)="onOrderPlaceAction()" data-bs-dismiss="modal"><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z" />
+          </svg> &nbsp;Place Order</button>
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-        
+
       </div>
     </div>
   </div>

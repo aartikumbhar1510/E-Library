@@ -84,8 +84,7 @@ export class StatusChartComponent implements OnInit {
       this.bookhistoryCount = this.historyCount.map(x => x.stock);
       this.bhCount = this.bookhistoryCount[0];
 
-      this.chartData.push(this.btCount);
-      console.warn(this.chartData);
+
 
    
 
@@ -108,7 +107,7 @@ export class StatusChartComponent implements OnInit {
         responsive: true,
         plugins: {
           legend: {
-            position: 'top',
+            position: 'top',display:true
           },
           title: {
             display: true,
@@ -140,7 +139,7 @@ export class StatusChartComponent implements OnInit {
           {
             label: 'Book Order',
             data: [this.createdList, this.approvedList, this.rejectedList],
-            backgroundColor: ['#ff3f34', '#1dd1a1', '#ffd32a'],
+            backgroundColor: ['#ffd32a', '#1dd1a1', '#ff3f34'],
           }
         ]
       };
@@ -152,7 +151,7 @@ export class StatusChartComponent implements OnInit {
           responsive: true,
           plugins: {
             legend: {
-              position: 'top',
+              position: 'bottom',display:false
             },
             title: {
               display: true,

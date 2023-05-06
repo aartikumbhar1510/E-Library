@@ -21,4 +21,10 @@ export class LoginService {
       return result;
     }));
   }
+
+  getUserById(id :any) {
+    return this._http.get<any[]>(this.apiUrl+'?id='+id).pipe(map((result: any[]) => {
+      return result;
+    }));
+  }
 }

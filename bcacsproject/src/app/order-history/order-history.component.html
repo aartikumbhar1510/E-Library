@@ -1,53 +1,75 @@
 <app-header></app-header>
 
 <div class="row mt-3">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      
-          <div class="input-group" style="width: 30%; margin-left: 69%;">
-            <input type="text" class="form-control" placeholder="Search"  value="Search" 
-            [(ngModel)]="searchText" (ngModelChange)="onSearchBookHistory($event)">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" disabled>
-                <i class="fa fa-search"></i>
-              </button>
-            </div>
-          </div>
-    
+  <div class="col-sm-12 col-md-12 col-lg-12">
+
+    <div class="input-group" style="width: 30%; margin-left: 69%;">
+      <input type="text" class="form-control" placeholder="Search" value="Search" [(ngModel)]="searchText"
+        (ngModelChange)="onSearchBookHistory($event)">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" disabled>
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
     </div>
 
-    
-    
+  </div>
+
+
+
 </div>
-  
- <div class="mt-1" style="margin-left:1% !important; margin-right: 1% !important;">
-  <div class="table-responsive">    
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#Sr.No</th>
-            <th scope="col">Book Name</th>
-            <th scope="col">Author</th>            
-            <th scope="col">Issue Date</th>
-            <th scope="col">Submit Date</th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of OrdersDataList">
-            <th scope="row"><div>{{order.id}}</div></th>
-            <td><div>{{order.bookName}}</div></td>
-            <td><div>{{order.author}}</div></td>           
-            <td><div>{{order.issueDate}}</div></td>
-            <td><div>{{order.submittedDate}}</div></td>
-            <td><div [ngClass]="onStatusChange(order.status)" style="margin-top: 10% !important;">{{order.status}}</div></td>
-            <td>
-              <button  title="Edit Order" style="border: none;" type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+
+<div class="mt-1" style="margin-left:1% !important; margin-right: 1% !important;">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#OrderID</th>
+          <th scope="col">Book Name</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Issue Date</th>
+          <th scope="col">Submit Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Remark</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of OrdersDataList">
+          <td scope="row" class="col-sm-1 col-md-1 col-lg-1">
+            <div>{{order.orderId}}</div>
+          </td>
+          <td class="col-sm-1 col-md-1 col-lg-1">
+            <div>{{order.bookName}}</div>
+          </td>
+          
+          <td class="col-sm-1 col-md-1 col-lg-1">
+            <div>{{order.qty}}</div>
+          </td>
+          <td class="col-sm-2 col-md-2 col-lg-2">
+            <div>{{order.issueDate |date:'short'}}</div>
+          </td>
+          <td class="col-sm-2 col-md-2 col-lg-2">
+            <div>{{order.submittedDate|date:'short'}}</div>
+          </td>
+          <td class="col-sm-1 col-md-1 col-lg-1">
+            <div [ngClass]="onStatusChange(order.status)" style="margin-top: 6% !important;">{{order.status}}</div>
+          </td>
+          <td class="col-sm-2 col-md-2 col-lg-2">
+            <div>{{order.submittedDate|date:'short'}}</div>
+          </td>
+          <td class="col-sm-2 col-md-2 col-lg-2">
+            <button title="Edit Order" style="border: none;" type="button" class="btn btn-success"
+              (click)="onEditBtnAction(order)" data-bs-toggle="modal" href="#staticBackdropupdate"><svg
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
               </svg></button>&nbsp;&nbsp;
 
-              <button title="View Book Details" style="border: none;" type="button" title="View Book Details"
-              data-bs-toggle="modal" href="#ViewModalToggle" (click)="onViewBookDeatils(order)" type="button" class="btn btn-warning">
+            <button title="View Book Details" style="border: none;" type="button" title="View Book Details"
+              data-bs-toggle="modal" href="#ViewModalToggle" (click)="onViewBookDeatils(order)" type="button"
+              class="btn btn-warning">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -58,41 +80,47 @@
                   d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z" />
               </svg></button>&nbsp;&nbsp;
 
-           
 
-              <button title="Remove Order" style="border: none;" type="button" class="btn btn-danger">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                </svg>
-              </button>&nbsp;&nbsp;
 
-              <button title="Return Book" style="border: none;" type="button" class="btn btn-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-                </svg>
-              </button>
-              
+            <button title="Remove Order" style="border: none;" type="button" class="btn btn-danger" (click)="onDeleteAction(order)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                viewBox="0 0 16 16">
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                <path
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+              </svg>
+            </button>&nbsp;&nbsp;
 
-            </td>
-          </tr>         
-        </tbody>
-      </table>
-    </div>
+            <button title="Return Book" style="border: none;" type="button" class="btn btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                <path
+                  d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+              </svg>
+            </button>
+
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
 
 
 
-  
+
 <!--view book details  start-->
 <!-- Modal -->
-<div class="modal fade" id="ViewModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div class="modal fade" id="ViewModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+  data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h3><strong>Detail of Order : {{viewBookData.id}}</strong></h3>
+        <h3><strong>OrderId - {{viewBookData.orderId}}</strong></h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -100,7 +128,7 @@
 
         <div class="mb-3 row">
           <label for="title" class="col-sm-4 col-form-label">Name</label>
-          <div class="col-sm-8 lbl-width" >
+          <div class="col-sm-8 lbl-width">
             <label for="title" class="col-sm-4 col-form-label lbl-width">{{viewBookData.studentName}}</label>
           </div>
         </div>
@@ -116,6 +144,13 @@
             <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.author}}</label>
           </div>
         </div>
+
+        <div class="mb-3 row">
+          <label for="Quantity" class="col-sm-4 col-form-label">Quantity</label>
+          <div class="col-sm-8 lbl-width">
+            <label for="Quantity" class="col-sm-4 col-form-label lbl-width">{{viewBookData.qty}}</label>
+          </div>
+        </div>
         <div class="mb-3 row">
           <label for="Bookname" class="col-sm-4 col-form-label">Status</label>
           <div class="col-sm-8 lbl-width">
@@ -126,7 +161,8 @@
         <div class="mb-3 row">
           <label for="Bookname" class="col-sm-4 col-form-label">Issue Date</label>
           <div class="col-sm-8 lbl-width">
-            <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.issueDate}}</label>
+            <label for="Bookname"
+              class="col-sm-4 col-form-label lbl-width">{{viewBookData.issueDate|date:'short'}}</label>
           </div>
         </div>
 
@@ -134,7 +170,8 @@
         <div class="mb-3 row">
           <label for="Bookname" class="col-sm-4 col-form-label">Submitted Date </label>
           <div class="col-sm-8 lbl-width">
-            <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.submittedDate }}</label>
+            <label for="Bookname" class="col-sm-4 col-form-label lbl-width">{{viewBookData.submittedDate
+              |date:'short'}}</label>
           </div>
         </div>
 
@@ -149,3 +186,77 @@
 
 
 <!--view book details  end-->
+
+
+
+<!--start -edit book order-->
+
+
+<!-- Modal -->
+<div class="modal fade margin-10" id="staticBackdropupdate" tabindex="-1" aria-labelledby="staticBackdroporderLabel"
+  aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdroporderLabel">Update Book order</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="updateOrderFrm">
+          <div class="row">
+
+            <div class="col">
+              <label for="">Name</label>
+              <input type="text" class="form-control" placeholder="Name" formControlName="studentName" readonly>
+            </div>
+            <div class="col">
+              <label for="">Book Name</label>
+              <input type="text" class="form-control" placeholder="" formControlName="bookName" readonly>
+            </div>
+          </div> <br>
+          <div class="row">
+            <div class="col">
+              <label for="">Author</label>
+              <input type="text" class="form-control" placeholder="" formControlName="author" readonly>
+            </div>
+            <div class="col">
+              <label for="">Quantity</label>
+              <input type="text" class="form-control" placeholder="Enter Quantity" formControlName="qty">
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col">
+              <label for="">Status</label>
+              <input type="text" class="form-control" placeholder="" formControlName="status" readonly>
+            </div>
+            <div class="col">
+              <label for="">Remark</label>
+              <input type="text" class="form-control" placeholder="Enter remark" formControlName="remark" readonly>
+            </div>
+          </div><br>
+          <div class="row">
+            <input type="hidden" class="form-control" formControlName="id">
+            <input type="hidden" class="form-control" formControlName="uid">
+            <input type="hidden" class="form-control" formControlName="bookid">
+            <input type="hidden" class="form-control" formControlName="orderId">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" (click)="updateOrderDetailsAction()" data-bs-dismiss="modal">
+          <svg
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+              </svg> &nbsp;Update Order</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--place new book order-->
+
+<!--end edit book order-->

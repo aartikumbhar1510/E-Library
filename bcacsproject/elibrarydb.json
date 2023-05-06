@@ -45,7 +45,7 @@
       "author": "Sun",
       "edition": "4",
       "genres": "Technology",
-      "qty": 10,
+      "qty": 9,
       "status": "Available"
     },
     {
@@ -105,7 +105,7 @@
       "author": "Lahu kumbhar",
       "edition": "4",
       "genres": "Finance",
-      "qty": "1",
+      "qty": 1,
       "status": "Available"
     }
   ],
@@ -115,24 +115,28 @@
       "uid": 4,
       "bookid": 1,
       "studentName": "Aarti Kumbhar",
-      "bookName": "ADV. JAVA",
+      "bookName": "ADV JAVA",
       "author": "Oracle",
-      "qty": 1,
       "status": "Created",
+      "remark": "",
       "issueDate": "12/03/2023",
-      "submittedDate": "19/03/2023"
+      "submittedDate": "12/03/2023",
+      "qty": 2,
+      "orderId": "ADV12345"
     },
     {
       "id": 2,
-      "uid": 2,
-      "bookid": 2,
-      "studentName": "Java",
-      "bookName": "CORE JAVA",
-      "author": "Oracle",
-      "qty": 1,
-      "status": "Approved",
-      "issueDate": "12/03/2023",
-      "submittedDate": "19/03/2023"
+      "uid": 4,
+      "bookid": 1,
+      "studentName": "Aarti Kumbhar",
+      "bookName": "Java",
+      "author": "Sun",
+      "status": "Created",
+      "remark": "",
+      "issueDate": "2023-05-06T05:14:26.468Z",
+      "submittedDate": "2023-05-13T05:14:26.467Z",
+      "qty": 2,
+      "orderId": "JAV9691"
     }
   ],
   "stock": [

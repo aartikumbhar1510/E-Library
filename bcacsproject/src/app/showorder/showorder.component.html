@@ -40,22 +40,28 @@
                             <td style="word-wrap: break-word;">{{data.bookName}}</td>
                         </tr>
                         <tr>
-
                             <td>Author</td>
                             <td>{{data.author}}</td>
                         </tr>
                         <tr>
 
                             <td>Status</td>
-                            <td><span class="badge bg-success">{{data.status}}</span></td>
+                            <td><span class="badge bg-warning">{{data.status}}</span></td>
                         </tr>
                         <tr>
                             <td>Issue Date</td>
-                            <td>{{data.issueDate}}</td>
+                            <td>{{data.issueDate|date:'short'}}</td>
                         </tr>
+
+
                         <tr>
-                            <td>Submission Date</td>
-                            <td>{{data.submittedDate}}</td>
+                            <td>Remark</td>
+                            <td>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                        placeholder="Enter your remark here ..!"></textarea>
+                                </div>
+                            </td>
                         </tr>
                     </table>
 

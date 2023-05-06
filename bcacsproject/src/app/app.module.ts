@@ -19,6 +19,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { OrderByPipe } from './Shared/pipes/orderBy';
 import{NgChartsModule} from 'ng2-charts';
 import { StudchartComponent } from './studchart/studchart.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { StudchartComponent } from './studchart/studchart.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgChartsModule
+    NgChartsModule,
+    ToastrModule 
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

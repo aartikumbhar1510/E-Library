@@ -16,7 +16,7 @@ export class ShoworderComponent {
   IsAdmin = false;
   searchText!: string;
   constructor(private _adservice: AdmindashboardService,
-    private _orderService:OrderService) {
+    private _orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -24,34 +24,33 @@ export class ShoworderComponent {
     if (this.loginUserRole == "admin") {
       this.IsAdmin = true;
     }
+    this.getAllNewOrders();
+  }
+
+  getAllNewOrders() {
     this._orderService.getAvailableBooks().subscribe(userdata => {
 
       console.warn(userdata)
       if (userdata) {
-        this.datalist = userdata.filter(x=>x.status =="Created");
-        this.OrdersDataList = userdata.filter(x=>x.status =="Created");
-      }else{
-        this.datalist=[];
+        this.datalist = userdata.filter(x => x.status == "Created");
+        this.OrdersDataList = userdata.filter(x => x.status == "Created");
+      } else {
+        this.datalist = [];
       }
     });
 
-
-    
-    
   }
 
-  onSearchPlacedOrder(searchText :string)
-  {
+  onSearchPlacedOrder(searchText: string) {
     this.searchText = searchText;
-    this.OrdersDataList = this.datalist?.filter((item)=>{
-      const regex = new RegExp(this.searchText,"i");
-      return regex.test(item.studentName)||regex.test(item.bookName)||regex.test(item.author)||regex.test(item.status);
+    this.OrdersDataList = this.datalist?.filter((item) => {
+      const regex = new RegExp(this.searchText, "i");
+      return regex.test(item.studentName) || regex.test(item.bookName) || regex.test(item.author) || regex.test(item.status);
     })
   }
 
-  onThreeDotClick()
-  {
-    
+  onThreeDotClick() {
+
   }
 
 }
