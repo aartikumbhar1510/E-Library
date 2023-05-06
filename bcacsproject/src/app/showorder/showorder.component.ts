@@ -15,6 +15,9 @@ export class ShoworderComponent {
   OrdersDataList!: IorderDetails[];
   IsAdmin = false;
   searchText!: string;
+  isDataLoaded:boolean=false;
+  statusChangeValue !: string;
+
   constructor(private _adservice: AdmindashboardService,
     private _orderService: OrderService) {
   }
@@ -32,10 +35,12 @@ export class ShoworderComponent {
 
       console.warn(userdata)
       if (userdata) {
+        this.isDataLoaded=false;
         this.datalist = userdata.filter(x => x.status == "Created");
         this.OrdersDataList = userdata.filter(x => x.status == "Created");
       } else {
         this.datalist = [];
+        this.isDataLoaded=true;
       }
     });
 
@@ -49,7 +54,21 @@ export class ShoworderComponent {
     })
   }
 
-  onThreeDotClick() {
+  onStatusChange(statusValue: string) {
+    if (statusValue === "Created") {
+      return this.statusChangeValue = "badge bg-warning";
+    } else if (statusValue === "Rejected") {
+      return this.statusChangeValue = "badge bg-danger";
+    } else {
+      return this.statusChangeValue = "badge bg-success";
+    }
+  }
+
+  onApprovedAction(){
+
+  }
+
+  onRejectAction(){
 
   }
 

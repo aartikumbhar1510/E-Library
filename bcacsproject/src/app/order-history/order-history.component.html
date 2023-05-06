@@ -59,7 +59,7 @@
             <div>{{order.submittedDate|date:'short'}}</div>
           </td>
           <td class="col-sm-2 col-md-2 col-lg-2">
-            <button title="Edit Order" style="border: none;" type="button" class="btn btn-success"
+            <button title="Edit Order" style="border: none;" type="button" class="btn btn-success btn-sm"
               (click)="onEditBtnAction(order)" data-bs-toggle="modal" href="#staticBackdropupdate"><svg
                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
                 viewBox="0 0 16 16">
@@ -69,7 +69,7 @@
 
             <button title="View Book Details" style="border: none;" type="button" title="View Book Details"
               data-bs-toggle="modal" href="#ViewModalToggle" (click)="onViewBookDeatils(order)" type="button"
-              class="btn btn-warning">
+              class="btn btn-warning btn-sm">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -82,7 +82,7 @@
 
 
 
-            <button title="Remove Order" style="border: none;" type="button" class="btn btn-danger" (click)="onDeleteAction(order)">
+            <button title="Remove Order" style="border: none;" type="button" class="btn btn-danger btn-sm" (click)="onDeleteAction(order)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
                 viewBox="0 0 16 16">
                 <path
@@ -92,7 +92,7 @@
               </svg>
             </button>&nbsp;&nbsp;
 
-            <button title="Return Book" style="border: none;" type="button" class="btn btn-primary">
+            <button title="Return Book" style="border: none;" type="button" class="btn btn-primary btn-sm">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />

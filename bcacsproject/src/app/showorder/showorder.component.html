@@ -3,9 +3,18 @@
 
 <app-header></app-header>
 <div class="row mt-3 mb-3">
-    <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="col-sm-6 col-md-6 col-lg-6" style="width: 30%; margin-left: 19%;">
 
-        <div class="input-group" style="width: 40%; margin-left: 30%;">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="z-index: 2;">
+           
+            <strong>Holy guacamole!</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+
+        <div class="input-group" style="width: 60%; margin-left: 39%;">
             <input type="text" class="form-control" placeholder="Search" value="Search" [(ngModel)]="searchText"
                 (ngModelChange)="onSearchPlacedOrder($event)">
             <div class="input-group-append">
@@ -18,68 +27,74 @@
     </div>
 </div>
 
-<div id="mydiv" style="overflow-y: scroll;">
-    <div class="row col-md-12 col-sm-12 col-lg-12">
-        <div class="col-md-3 col-sm-3 col-lg-3" *ngFor="let data of OrdersDataList"
-            style="margin-left: 1%; margin-bottom: 1%;width:24% !important">
-            <div class="card  shadow rounded">
-                <div class="card-header" style="border: 0px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="green"
-                        class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                    </svg>
-                    <span> &nbsp;{{data.studentName}}</span>
+<div class="mt-1" style="margin-left:1% !important; margin-right: 1% !important;">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#OrderID</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Qty</th>
 
-                </div>
-                <div class="card-body" style="word-wrap: break-word !important;">
-                    <table class="table table-responsive">
-                        <tr>
-                            <td>Book Name</td>
-                            <td style="word-wrap: break-word;">{{data.bookName}}</td>
-                        </tr>
-                        <tr>
-                            <td>Author</td>
-                            <td>{{data.author}}</td>
-                        </tr>
-                        <tr>
+                    <th scope="col">Issue Date</th>
+                    
+                    <th scope="col">Status</th>
+                    <th scope="col">Remark</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of OrdersDataList">
+                    <td scope="row" class="col-sm-1 col-md-1 col-lg-1">
+                        <div>{{order.orderId}}</div>
+                    </td>
+                    <td class="col-sm-2 col-md-2 col-lg-2">
+                        <div>{{order.studentName}}</div>
+                    </td>
+                    <td class="col-sm-2 col-md-2 col-lg-2">
+                        <div>{{order.bookName}}</div>
+                    </td>
 
-                            <td>Status</td>
-                            <td><span class="badge bg-warning">{{data.status}}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Issue Date</td>
-                            <td>{{data.issueDate|date:'short'}}</td>
-                        </tr>
+                    <td class="col-sm-1 col-md-1 col-lg-1">
+                        <div>{{order.qty}}</div>
+                    </td>
+                    <td class="col-sm-2 col-md-2 col-lg-2">
+                        <div>{{order.issueDate |date:'short'}}</div>
+                    </td>
+                   
+                    <td class="col-sm-1 col-md-1 col-lg-1">
+                        <div [ngClass]="onStatusChange(order.status)" style="margin-top: 6% !important;">
+                            {{order.status}}</div>
+                    </td>
+                    <td class="col-sm-2 col-md-2 col-lg-2">
+                        <div>{{order.submittedDate|date:'short'}}</div>
+                    </td>
+                    <td class="col-sm-2 col-md-2 col-lg-2">
+                        <button title="Approve" style="border: none;" type="button" class="btn btn-success btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                              </svg>    
+                        </button>&nbsp;&nbsp;
+                            <button title="Reject" style="border: none;" type="button" class="btn btn-danger btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                              </svg>
+                        </button>
 
 
-                        <tr>
-                            <td>Remark</td>
-                            <td>
-                                <div class="form-group">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-                                        placeholder="Enter your remark here ..!"></textarea>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-
-                </div>
-                <div class="card-footer">
-                    <div style="float: right;">
-                        <button type="button" class="btn btn-success" title="Approve the order"> &nbsp;Approve</button>
-                        &nbsp;&nbsp;
-
-                        <button type="button" class="btn btn-danger" title="Reject the order">&nbsp;Reject</button>
-
-
-                    </div>
-                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row" *ngIf="isDataLoaded">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <div class="card-title">
+                <h4>Loading Data</h4>
             </div>
-
         </div>
-
-
     </div>
 </div>

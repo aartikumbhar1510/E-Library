@@ -19,6 +19,7 @@ export class OrderHistoryComponent {
   IsAdmin = false;
   searchText!: string;
   statusChangeValue !: string;
+
   viewBookData: IorderDetails = new IorderDetails();
   OrdersDataListByUser!: IorderDetails[];
   updateOrderFrm!: FormGroup;
