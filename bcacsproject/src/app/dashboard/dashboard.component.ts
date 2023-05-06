@@ -127,7 +127,7 @@ export class DashboardComponent implements OnInit {
     this.OrderFormData.author = this.OrderFrm.value.author;
     this.OrderFormData.qty = Number(this.OrderFrm.value.qty);
     this.OrderFormData.status = Constant.CREATED
-    this.OrderFormData.remark = "";
+    this.OrderFormData.remark = Constant.DEFAULTCMT;
     this.OrderFormData.issueDate = new Date();
     this.OrderFormData.submittedDate = new Date(todyasDate.setDate(todyasDate.getDate() + 7));
 
