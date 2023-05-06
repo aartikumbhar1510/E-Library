@@ -121,7 +121,7 @@
       "remark": "",
       "issueDate": "12/03/2023",
       "submittedDate": "12/03/2023",
-      "qty": 2,
+      "qty": 1,
       "orderId": "ADV12345"
     },
     {
@@ -135,8 +135,22 @@
       "remark": "",
       "issueDate": "2023-05-06T05:14:26.468Z",
       "submittedDate": "2023-05-13T05:14:26.467Z",
-      "qty": 2,
+      "qty": 1,
       "orderId": "JAV9691"
+    },
+    {
+      "id": 3,
+      "uid": 6,
+      "bookid": 1,
+      "studentName": "Lahu Kumbhar",
+      "bookName": "Java",
+      "author": "Sun",
+      "status": "Created",
+      "remark": "",
+      "issueDate": "2023-05-06T07:42:18.266Z",
+      "submittedDate": "2023-05-13T07:42:18.266Z",
+      "qty": 1,
+      "orderId": "JAV6141"
     }
   ],
   "stock": [
