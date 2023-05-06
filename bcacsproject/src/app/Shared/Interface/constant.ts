@@ -3,7 +3,9 @@ export class Constant{
     public static CREATED ="Created";
     public static APPROVED ="Approved";
     public static REJECTED ="Rejected";
-    public static REJECTEDMSG ="Requested book not available";
-    public static APPROVEDMSG ="Your order got approved";
+    public static REJECTEDCMT ="Requested book not available";
+    public static APPROVEDCMT ="Your order got approved";
+    public static REJECTEDMSG ="Request has been rejected.";
+    public static APPROVEDMSG ="Request has been approved";
     
 }

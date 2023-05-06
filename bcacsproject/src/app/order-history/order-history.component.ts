@@ -24,6 +24,7 @@ export class OrderHistoryComponent {
   OrdersDataListByUser!: IorderDetails[];
   updateOrderFrm!: FormGroup;
   updateFormData: IorderDetails = new IorderDetails();
+  isApproved:boolean=false;
   constructor(private _orderService: OrderService, private _booksService: BookService, private _fb: FormBuilder,
     private _rtr: Router) {
   }

@@ -40,8 +40,8 @@ export class StatusChartComponent implements OnInit {
   rejectedList: number = 0;
 
   //onchange chart type
-  chartTypeSelection:string='doughnut';
-  
+  chartTypeSelection: string = 'doughnut';
+
 
   constructor(private _bookService: BookService, private _orderService: OrderService) {
 
@@ -53,16 +53,16 @@ export class StatusChartComponent implements OnInit {
 
   }
 
- 
+
   onBookStockSelectChange(stockChartType: string) {
     this.chartTypeSelection = stockChartType;
     //this.drawDoughnutChart(this.chartTypeSelection);
     //this.drawPieChart(this.chartTypeSelection);
   }
 
- 
 
-  drawDoughnutChart(chartType :string) {
+
+  drawDoughnutChart(chartType: string) {
     this.piectx = document.getElementById('mychart');
     this._bookService.getAvailableBookStock().subscribe(result => {
 
@@ -86,45 +86,45 @@ export class StatusChartComponent implements OnInit {
 
 
 
-   
 
 
-    const data = {
-      labels: ['Technology', 'Finance', 'Geo', 'History'],
-      datasets: [
-        {
-          label: 'Book Stock',
-          data: [this.btCount, this.bfCount, this.bgCount, this.bhCount],
-          backgroundColor: ['#ff3f34', '#1dd1a1', '#ffd32a', 'blue'],
-        }
-      ]
-    };
 
-    this.pieconfig = {
-      type: chartType,
-      data: data,
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',display:true
-          },
-          title: {
-            display: true,
-            text: 'Available Book Stock',
-            align: 'center'
+      const data = {
+        labels: ['Technology', 'Finance', 'Geo', 'History'],
+        datasets: [
+          {
+            label: 'Book Stock',
+            data: [this.btCount, this.bfCount, this.bgCount, this.bhCount],
+            backgroundColor: ['#ff3f34', '#1dd1a1', '#ffd32a', 'blue'],
           }
-        }
-      },
-    };
-    const mychart = new Chart(this.piectx, this.pieconfig);
-  })
+        ]
+      };
+
+      this.pieconfig = {
+        type: chartType,
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top', display: true
+            },
+            title: {
+              display: true,
+              text: 'Available Book Stock',
+              align: 'center'
+            }
+          }
+        },
+      };
+      const mychart = new Chart(this.piectx, this.pieconfig);
+    })
   }
 
 
 
 
-  drawPieChart(orderChartType :string) {
+  drawPieChart(orderChartType: string) {
     this.ctx = document.getElementById('mychart1');
 
     this._orderService.getAvailableBooks().subscribe(result => {
@@ -145,13 +145,13 @@ export class StatusChartComponent implements OnInit {
       };
 
       this.config = {
-        type: 'pie',
+        type: 'doughnut',
         data: data,
         options: {
           responsive: true,
           plugins: {
             legend: {
-              position: 'bottom',display:false
+              position: 'top', display: true
             },
             title: {
               display: true,

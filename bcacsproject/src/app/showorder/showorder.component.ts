@@ -3,6 +3,9 @@ import { ILoginInfo } from '../Shared/Interface/ILoginInfo';
 import { IorderDetails } from '../Shared/Interface/IorderDetails';
 import { AdmindashboardService } from '../Shared/Services/admindashboard.service';
 import { OrderService } from '../Shared/Services/order.service';
+import { Constant } from '../Shared/Interface/constant';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-showorder',
@@ -15,11 +18,14 @@ export class ShoworderComponent {
   OrdersDataList!: IorderDetails[];
   IsAdmin = false;
   searchText!: string;
-  isDataLoaded:boolean=false;
+  isDataLoaded: boolean = false;
   statusChangeValue !: string;
+  responseMessage: string = "";
+  isNotification: boolean = false;
+  updateFormData: IorderDetails = new IorderDetails();
 
   constructor(private _adservice: AdmindashboardService,
-    private _orderService: OrderService) {
+    private _orderService: OrderService, private _rtr: Router) {
   }
 
   ngOnInit(): void {
@@ -28,6 +34,7 @@ export class ShoworderComponent {
       this.IsAdmin = true;
     }
     this.getAllNewOrders();
+    this.isNotification=false;
   }
 
   getAllNewOrders() {
@@ -35,12 +42,12 @@ export class ShoworderComponent {
 
       console.warn(userdata)
       if (userdata) {
-        this.isDataLoaded=false;
+        this.isDataLoaded = false;
         this.datalist = userdata.filter(x => x.status == "Created");
         this.OrdersDataList = userdata.filter(x => x.status == "Created");
       } else {
         this.datalist = [];
-        this.isDataLoaded=true;
+        this.isDataLoaded = true;
       }
     });
 
@@ -64,11 +71,71 @@ export class ShoworderComponent {
     }
   }
 
-  onApprovedAction(){
+  onApprovedAction(selectedRowData: any) {
+   
+    let todyasDate = new Date();
+    this.updateFormData.id = selectedRowData.id;
 
+    this.updateFormData.bookid = selectedRowData.bookid;
+    this.updateFormData.uid = selectedRowData.uid;
+    this.updateFormData.studentName = selectedRowData.studentName;
+    this.updateFormData.bookName = selectedRowData.bookName;
+    this.updateFormData.orderId = selectedRowData.orderId;
+    this.updateFormData.author = selectedRowData.author;
+    this.updateFormData.qty = Number(selectedRowData.qty);
+    this.updateFormData.status = Constant.APPROVED
+    this.updateFormData.remark = Constant.APPROVEDCMT;
+    this.updateFormData.issueDate = selectedRowData.issueDate;;
+    this.updateFormData.submittedDate =new Date(todyasDate.setDate(todyasDate.getDate() + 7)); 
+    console.warn(this.updateFormData);
+    this._orderService.updateOrder(this.updateFormData).subscribe((data: any) => {
+      if (data) {
+        this.responseMessage = Constant.APPROVEDMSG
+        this.showNotofication(this.responseMessage);
+        this._rtr.navigateByUrl('/showorder')
+      }
+    });
+   
   }
 
-  onRejectAction(){
+
+
+  onRejectAction(selectedRowData: any) {
+    let todyasDate = new Date();
+    this.updateFormData.id = selectedRowData.id;
+    this.updateFormData.bookid = selectedRowData.bookid;
+    this.updateFormData.uid = selectedRowData.uid;
+    this.updateFormData.studentName = selectedRowData.studentName;
+    this.updateFormData.bookName = selectedRowData.bookName;
+    this.updateFormData.orderId = selectedRowData.orderId;
+    this.updateFormData.author = selectedRowData.author;
+    this.updateFormData.qty = Number(selectedRowData.qty);
+    this.updateFormData.status = Constant.REJECTED
+    this.updateFormData.remark = Constant.REJECTEDCMT;
+    this.updateFormData.issueDate = selectedRowData.issueDate;;
+    this.updateFormData.submittedDate =new Date(todyasDate.setDate(todyasDate.getDate() + 0)); 
+    console.warn(this.updateFormData);
+    this._orderService.updateOrder(this.updateFormData).subscribe((data: any) => {
+      if (data) {
+        this.responseMessage = Constant.REJECTEDMSG
+        this.showNotofication(this.responseMessage);
+        this._rtr.navigateByUrl('/showorder')
+      }
+    });
+  }
+
+
+  showNotofication(message: string) {
+
+    var that = this;
+    this.responseMessage = message;
+    this.isNotification=true;
+
+    setTimeout(function () {
+      that.isNotification = false;
+      that.getAllNewOrders();
+
+    }, 3000);
 
   }
 
