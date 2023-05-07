@@ -107,7 +107,7 @@ export class OrderHistoryComponent {
     this.updateFormData.author = this.updateOrderFrm.value.author;
     this.updateFormData.qty = Number(this.updateOrderFrm.value.qty);
     this.updateFormData.status = Constant.CREATED
-    this.updateFormData.remark = "";
+    this.updateFormData.remark = Constant.DEFAULTCMT;
     this.updateFormData.issueDate = this.updateOrderFrm.value.issueDate;;
     this.updateFormData.submittedDate = this.updateOrderFrm.value.submittedDate;
 

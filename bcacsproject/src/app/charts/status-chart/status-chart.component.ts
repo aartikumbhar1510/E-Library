@@ -58,6 +58,8 @@ export class StatusChartComponent implements OnInit {
     this.chartTypeSelection = stockChartType;
     //this.drawDoughnutChart(this.chartTypeSelection);
     //this.drawPieChart(this.chartTypeSelection);
+
+   
   }
 
 
@@ -85,7 +87,11 @@ export class StatusChartComponent implements OnInit {
       this.bhCount = this.bookhistoryCount[0];
 
 
-
+      // const genreStockCounts = result.reduce((acc, result) => {
+      //   const genres = result.genres;
+      //   acc[genres] = (acc[genres] || 0) + result.stock;
+      //   return acc;
+      // }, {});
 
 
 

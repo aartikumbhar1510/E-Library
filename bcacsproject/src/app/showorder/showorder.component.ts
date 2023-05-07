@@ -5,6 +5,8 @@ import { AdmindashboardService } from '../Shared/Services/admindashboard.service
 import { OrderService } from '../Shared/Services/order.service';
 import { Constant } from '../Shared/Interface/constant';
 import { Router } from '@angular/router';
+import { BookService } from '../Shared/Services/book.service';
+import { Ibooks } from '../Shared/Interface/Ibooks';
 
 
 @Component({
@@ -23,9 +25,12 @@ export class ShoworderComponent {
   responseMessage: string = "";
   isNotification: boolean = false;
   updateFormData: IorderDetails = new IorderDetails();
+  bookid: number = 2;
+  qty: number = 2;
+  updateBookDataStock: Ibooks = new Ibooks();
 
   constructor(private _adservice: AdmindashboardService,
-    private _orderService: OrderService, private _rtr: Router) {
+    private _orderService: OrderService, private _rtr: Router, private _bookService: BookService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +39,7 @@ export class ShoworderComponent {
       this.IsAdmin = true;
     }
     this.getAllNewOrders();
-    this.isNotification=false;
+    this.isNotification = false;
   }
 
   getAllNewOrders() {
@@ -72,7 +77,7 @@ export class ShoworderComponent {
   }
 
   onApprovedAction(selectedRowData: any) {
-   
+
     let todyasDate = new Date();
     this.updateFormData.id = selectedRowData.id;
 
@@ -86,16 +91,17 @@ export class ShoworderComponent {
     this.updateFormData.status = Constant.APPROVED
     this.updateFormData.remark = Constant.APPROVEDCMT;
     this.updateFormData.issueDate = selectedRowData.issueDate;;
-    this.updateFormData.submittedDate =new Date(todyasDate.setDate(todyasDate.getDate() + 7)); 
+    this.updateFormData.submittedDate = new Date(todyasDate.setDate(todyasDate.getDate() + 7));
     console.warn(this.updateFormData);
     this._orderService.updateOrder(this.updateFormData).subscribe((data: any) => {
       if (data) {
         this.responseMessage = Constant.APPROVEDMSG
+        this.updateMasterStock(this.updateFormData.bookid, this.updateFormData.qty);
         this.showNotofication(this.responseMessage);
-        this._rtr.navigateByUrl('/showorder')
+        this._rtr.navigateByUrl('/show-order')
       }
     });
-   
+
   }
 
 
@@ -113,13 +119,13 @@ export class ShoworderComponent {
     this.updateFormData.status = Constant.REJECTED
     this.updateFormData.remark = Constant.REJECTEDCMT;
     this.updateFormData.issueDate = selectedRowData.issueDate;;
-    this.updateFormData.submittedDate =new Date(todyasDate.setDate(todyasDate.getDate() + 0)); 
+    this.updateFormData.submittedDate = new Date(todyasDate.setDate(todyasDate.getDate() + 0));
     console.warn(this.updateFormData);
     this._orderService.updateOrder(this.updateFormData).subscribe((data: any) => {
       if (data) {
         this.responseMessage = Constant.REJECTEDMSG
         this.showNotofication(this.responseMessage);
-        this._rtr.navigateByUrl('/showorder')
+        this._rtr.navigateByUrl('/show-order')
       }
     });
   }
@@ -129,13 +135,31 @@ export class ShoworderComponent {
 
     var that = this;
     this.responseMessage = message;
-    this.isNotification=true;
+    this.isNotification = true;
 
     setTimeout(function () {
       that.isNotification = false;
       that.getAllNewOrders();
 
     }, 3000);
+
+  }
+
+  updateMasterStock(bookid: number, qty: number) {
+
+    this._bookService.getStockByBookId(bookid).subscribe((data: Ibooks) => {
+      if (data) {
+        this.updateBookDataStock = data;
+        this.updateBookDataStock.qty =  data.qty - qty;
+
+        if (this.updateBookDataStock.qty != null) {
+          this._bookService.updateStock(this.updateBookDataStock).subscribe(data => {
+            console.warn(data);
+          })
+        }
+      }
+    })
+
 
   }
 

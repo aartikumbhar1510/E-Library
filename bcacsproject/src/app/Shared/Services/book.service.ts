@@ -19,7 +19,7 @@ export class BookService {
   }
 
   addNewBookToLibrary(dataParam: Ibooks): Observable<Ibooks> {
-    return this._http.post<Ibooks>(this.baseURL + 'Books', dataParam).pipe(map((data: Ibooks) => {
+    return this._http.post<Ibooks>(`${this.baseURL}Books`, dataParam).pipe(map((data: Ibooks) => {
       return data;
     }));
   }
@@ -82,5 +82,18 @@ export class BookService {
     return this._http.get<any[]>(this.baseURL + 'Books' ).pipe(map((data: any[]) => {
       return data;
     }))
+  }
+
+  getStockByBookId(inputParam:any){
+    return this._http.get<any>(`${this.baseURL}Books/${inputParam}`).pipe(map((data:Ibooks)=>{
+      return data;
+    }))
+  }
+
+  updateStock(inputParam:Ibooks){   
+    return this._http.put(`${this.baseURL}Books/${inputParam.id}`, inputParam);
+  }
+  deleteOrder(id: number): Observable<any> {
+    return this._http.delete(`${this.baseURL}Books/${id}`);
   }
 }
