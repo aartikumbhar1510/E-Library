@@ -38,6 +38,7 @@ export class AdminDashboardComponent implements OnInit {
 
   stockModel: IStockModel[] | undefined;
   stockModelData: IStockModel = new IStockModel();
+  viewBookData: Ibooks = new Ibooks();
   constructor(private _adservice: AdmindashboardService,
     private _booksService: BookService,
     private _fb: FormBuilder, private _rtr: Router, private _actRoute: ActivatedRoute) {
@@ -85,31 +86,20 @@ export class AdminDashboardComponent implements OnInit {
 
   OnAddBookAction() {
     this.IBookData.id = this.lastUpdatedCount + 1;
-    this.IBookData.bookid = this.lastUpdatedCount + 1;
+    this.IBookData.bookid = this.IBookData.id + 1;
     this.IBookData.title = this.frmBook.value.title;
     this.IBookData.author = this.frmBook.value.author;
     this.IBookData.edition = this.frmBook.value.edition;
     this.IBookData.genres = this.frmBook.value.genres;
-    this.IBookData.qty = this.frmBook.value.qty;
+    this.IBookData.qty =Number( this.frmBook.value.qty);
     this.IBookData.status = this.frmBook.value.status;
 
     this._booksService.addNewBookToLibrary(this.IBookData).subscribe(data => {
       if (data) {
 
-        this._booksService.getAvailableBookStock().subscribe((data: IStockModel[]) => {
-          this.stockModel = data.filter(x => x.genres === this.IBookData.genres);
-          console.warn(this.stockModel);
-        })
-        this.stockModelData.stock = this.stockModelData.stock + this.IBookData.qty;
-        console.warn(this.stockModelData.stock);
-        // this._booksService.updateBookStock(this.stockModelData).subscribe(result => {
-        //   if (result) {
-        //     this.getAvailableBooks();
-        //     this.frmBook.reset();
-        //     this.closebutton.nativeElement.click();
-        //     this.closeAndRedirect();
-        //   }
-        // })
+        this.closeAndRedirect();        
+        this.getAvailableBooks();
+
       }
 
     })
@@ -147,29 +137,56 @@ export class AdminDashboardComponent implements OnInit {
     this.IBookData.author = this.frmBook.value.author;
     this.IBookData.edition = this.frmBook.value.edition;
     this.IBookData.genres = this.frmBook.value.genres;
-    this.IBookData.qty = this.frmBook.value.qty;
+    this.IBookData.qty = Number(this.frmBook.value.qty);
     this.IBookData.status = this.frmBook.value.status;
 
     this._booksService.editBookDetails(this.IBookData, this.IBookData.bookid).subscribe(data => {
       if (data) {
-        this.closebutton.nativeElement.click();
+
+        this.closebutton.nativeElement.click();       
         this.closeAndRedirect();
+        this.getAvailableBooks();
       }
 
     })
+
 
   }
 
 
   closeAndRedirect() {
-
+    this.resetForAndClearData();
     this._rtr.navigate(['/admin-dashboard']);
   }
 
 
-  openCalculator() {
-    var require: any;
-    const { exec } = require('child_process');
-    exec('calc');
+
+  onViewDetailAction(selectedRowData: any) {
+    this.viewBookData = selectedRowData;
+    console.warn(this.viewBookData)
+
   }
+
+  onDeleteAction(selectedRowData: any) {
+    this._booksService.deleteOrder(selectedRowData.id).subscribe(data => {
+      if (data) {
+
+        this.closeAndRedirect();
+        this.getAvailableBooks();
+      }
+    })
+  }
+
+  resetForAndClearData(){
+    this.frmBook = this._fb.group({
+      bookid: [''],
+      title: [''],
+      author: [''],
+      edition: [''],
+      genres: [''],
+      qty: [''],
+      status: ['']
+    });
+  }
+
 }

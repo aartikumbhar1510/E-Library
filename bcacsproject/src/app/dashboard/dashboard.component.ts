@@ -116,8 +116,7 @@ export class DashboardComponent implements OnInit {
 
   onOrderPlaceAction() {
     let todyasDate = new Date();
-    this.OrderFormData.id = this.lastUpdatedorderCount + 1;
-    
+    this.OrderFormData.id = this.lastUpdatedorderCount + 1;    
     this.OrderFormData.bookid = this.OrderFrm.value.bookid;
     this.OrderFormData.uid = this.OrderFrm.value.uid;
     this.OrderFormData.studentName = this.OrderFrm.value.studentName;
@@ -135,22 +134,7 @@ export class DashboardComponent implements OnInit {
     this._orderService.placeNewOrder(this.OrderFormData).subscribe((data: any) => {
       if (data) {
         this.resetFormValues();
-        this.closeAndRedirect();
-        // this.stockData.id = this.OrderFormData.bookid
-        // this.latestStock = this.availableStock?.filter(x=>x.bookid ==this.OrderFormData.bookid);
-        // ///this.stockCount = this.latestStock?.pop()?.qty;
-        // this.stockData.qty = this.stockCount - this.OrderFormData.qty;
-
-        // console.warn(this.stockData)
-
-        // this._booksService.updateBookStock(this.stockData).subscribe(result => {
-        //   if (result) {
-        //     console.warn(result);
-        //     this.resetFormValues();
-        //     this.closeAndRedirect();
-        //   }
-        // })
-
+        this.closeAndRedirect();        
       }
     })
 

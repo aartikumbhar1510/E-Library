@@ -7,6 +7,6 @@ export class Constant{
     public static APPROVEDCMT ="Your order got approved";
     public static REJECTEDMSG ="Request has been rejected.";
     public static APPROVEDMSG ="Request has been approved.";
-    public static DEFAULTCMT ="Sent for approval.";
+    public static DEFAULTCMT ="Waiting for approval.";
     
 }

@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   
   {
-    path: 'showorder',
+    path: 'show-order',
     component:  ShoworderComponent,
     canActivate:[AuthGuard]
   },

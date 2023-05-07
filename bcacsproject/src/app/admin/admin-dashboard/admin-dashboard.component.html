@@ -59,7 +59,7 @@
                   d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
               </svg></button>&nbsp;
 
-            <button title="View Book Details" style="border: none;" type="button" title="View Book Details" class="btn btn-warning">
+            <button title="View Book Details" style="border: none;" type="button" title="View Book Details" class="btn btn-warning" data-bs-toggle="modal" href="#ViewModalToggle" (click)="onViewDetailAction(book)">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-task"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -71,7 +71,7 @@
               </svg></button>&nbsp;
 
 
-            <button *ngIf="IsAdmin" title="Remove Book" style="border: none;" type="button" class="btn btn-danger">
+            <button *ngIf="IsAdmin" title="Remove Book" style="border: none;" type="button" class="btn btn-danger" (click)="onDeleteAction(book)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
                 viewBox="0 0 16 16">
                 <path
@@ -163,7 +163,7 @@
         </div>
       </form>
       <div class="">
-        <button *ngIf="isShow" type="submit" class="btn btn-warning" style="width: 25% !important;margin-left: 36%;"
+        <button *ngIf="isShow" type="submit" class="btn btn-warning" data-bs-dismiss="modal" style="width: 25% !important;margin-left: 36%;"
           (click)="OnAddBookAction()">
 
           Submit</button>
@@ -255,7 +255,7 @@
         <button *ngIf="isShow" type="submit" class="btn btn-warning" style="width: 25% !important;margin-left: 36%;">
           Submit</button>
 
-        <button *ngIf="isEdit" type="submit" class="btn btn-warning" style="width: 25% !important;margin-left: 36%;"
+        <button *ngIf="isEdit" type="submit" class="btn btn-warning" data-bs-dismiss="modal" style="width: 25% !important;margin-left: 36%;"
           (click)="onUpdateAction()">
           Update</button>
 
@@ -267,3 +267,66 @@
 
 
 <!--edit end-->
+
+<!--view model - start-->
+<!-- Modal -->
+<div class="modal fade" id="ViewModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><strong>Book Detail</strong></h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="mb-3 row">
+          <label for="title" class="col-sm-4 col-form-label">Book Name</label>
+          <div class="col-sm-8">
+            <label for="title" class="col-sm-8 col-form-label">{{viewBookData.title}}</label>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Author</label>
+          <div class="col-sm-8">
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.author}}</label>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Genres</label>
+          <div class="col-sm-8">
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.genres}}</label>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Edition</label>
+          <div class="col-sm-8">
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.edition}}</label>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Quantity</label>
+          <div class="col-sm-8">
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.qty}}</label>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="Bookname" class="col-sm-4 col-form-label">Status</label>
+          <div class="col-sm-8">
+            <label for="Bookname" class="col-sm-8 col-form-label">{{viewBookData.status}}</label>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg" style="width:100px !important" data-bs-dismiss="modal" aria-label="Close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--view model - end-->

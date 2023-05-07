@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrderService } from '../Shared/Services/order.service';
+import { Constant } from '../Shared/Interface/constant';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,8 @@ export class HeaderComponent {
   sidebarExpanded = true;
   LoggedInUser :any|undefined;
   LoggedInRole : any|undefined;
-  constructor(private _rtr: Router) { }
+  totalOrderCount:number=0;
+  constructor(private _rtr: Router,private _orderService :OrderService) { }
 
   ngOnInit(): void {
     this.LoggedInUser = localStorage.getItem('username');
@@ -21,8 +24,7 @@ export class HeaderComponent {
     }else{
       this.isAdmin =false;
     }
-    
-    console.warn(this.LoggedInUser);
+    this.getTotalOrderCount();
   }
 
   onSearchBtnClick(_searchText: String) {
@@ -36,5 +38,12 @@ export class HeaderComponent {
     localStorage.clear();
     this._rtr.navigate(['account/login']);
     
+  }
+
+  getTotalOrderCount(){
+    this._orderService.getTotalOrderCount().subscribe(data=>{
+      this.totalOrderCount=data?.filter(x=>x.status===Constant.CREATED).length;
+      console.warn(this.totalOrderCount)
+    })
   }
 }
