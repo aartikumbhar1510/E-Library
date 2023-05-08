@@ -49,4 +49,17 @@ export class OrderService {
   deleteOrder(id: number): Observable<any> {
     return this._http.delete(`${this.baseURL}BooksOrder/${id}`);
   }
+
+  createDueEntry(inputParam :any){
+    return this._http.post<any>(this.baseURL+'studentDue', inputParam)
+  }
+
+
+  getDueOrderHistoryByUserID(uid: any) {
+    return this._http.get<any[]>(this.baseURL + 'studentDue?uid=' + uid)
+      .pipe(map((data: any[]) => {
+        return data;
+      }))
+  }
+
 }

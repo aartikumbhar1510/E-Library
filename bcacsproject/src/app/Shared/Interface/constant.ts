@@ -8,5 +8,7 @@ export class Constant{
     public static REJECTEDMSG ="Request has been rejected.";
     public static APPROVEDMSG ="Request has been approved.";
     public static DEFAULTCMT ="Waiting for approval.";
+    public static PAID ="Paid";
+    public static UNPAID ="Unpaid";
     
 }

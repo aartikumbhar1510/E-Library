@@ -20,6 +20,7 @@ import { OrderByPipe } from './Shared/pipes/orderBy';
 import{NgChartsModule} from 'ng2-charts';
 import { StudchartComponent } from './studchart/studchart.component';
 import { ToastrModule } from 'ngx-toastr';
+import { DuecalculationComponent } from './duecalculation/duecalculation.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ToastrModule } from 'ngx-toastr';
     StatusChartComponent,
     OrderHistoryComponent,
     OrderByPipe,
-    StudchartComponent
+    StudchartComponent,
+    DuecalculationComponent
   ],
   imports: [
     BrowserModule,

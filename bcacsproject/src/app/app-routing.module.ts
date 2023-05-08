@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PagenotfoundComponent } from './Shared/Error/pagenotfound/pagenotfound.component';
 import { ShoworderComponent } from './showorder/showorder.component';
+import { DuecalculationComponent } from './duecalculation/duecalculation.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,9 @@ const routes: Routes = [
     path: 'show-order',
     component:  ShoworderComponent,
     canActivate:[AuthGuard]
+  },
+  {
+    path: 'due-calculation', component:DuecalculationComponent,canActivate:[AuthGuard]
   },
   {
     path: '**',
