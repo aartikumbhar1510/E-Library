@@ -6,6 +6,7 @@ import { Ibooks } from '../Shared/Interface/Ibooks';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Constant } from '../Shared/Interface/constant';
 import { Router } from '@angular/router';
+import { IDueEntryModel } from '../Shared/Interface/IDueEntryModel';
 
 @Component({
   selector: 'app-order-history',
@@ -24,7 +25,8 @@ export class OrderHistoryComponent {
   OrdersDataListByUser!: IorderDetails[];
   updateOrderFrm!: FormGroup;
   updateFormData: IorderDetails = new IorderDetails();
-  isApproved:boolean=false;
+  isApproved: boolean = false;
+  dueEntryModel : IDueEntryModel= new IDueEntryModel();
   constructor(private _orderService: OrderService, private _booksService: BookService, private _fb: FormBuilder,
     private _rtr: Router) {
   }
@@ -84,6 +86,7 @@ export class OrderHistoryComponent {
       if (data) {
         this.datalist = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
         this.OrdersDataList = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
+        this.calculateDueAndCreateNewEntry(data);
       } else {
         this.datalist = [];
       }
@@ -126,12 +129,48 @@ export class OrderHistoryComponent {
     this._rtr.navigate(['/order-history']);
   }
 
-  onDeleteAction(selectedRowData :any) {
+  onDeleteAction(selectedRowData: any) {
     this._orderService.deleteOrder(selectedRowData.id).subscribe((data: any) => {
       if (data) {
         this.getOrderHistoryByUserID();
         this.closeAndRedirect()
       }
     })
+  }
+
+  calculateDueAndCreateNewEntry(data: any[]) {
+
+    data.forEach(record => {
+      const today = new Date();
+      const date1 = new Date(record.submittedDate);
+      console.warn(date1)
+      const diffInMs = Math.abs(today.getTime() - date1.getTime());
+      const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+      if (diffInDays < 1 && (record.status!=Constant.CREATED || record.status!=Constant.REJECTED)) {
+        this.updateFormData.id = record.id;
+          this.updateFormData.bookid = record.bookid;
+          this.updateFormData.uid = record.uid;
+          this.updateFormData.studentName = record.studentName;
+          this.updateFormData.bookName = record.bookName;
+          this.updateFormData.orderId = record.orderId;
+          this.updateFormData.author = record.author;
+          this.updateFormData.qty = record.qty;
+          this.updateFormData.status = Constant.UNPAID;
+          this.updateFormData.remark = record.remark;
+          this.updateFormData.issueDate = record.issueDate;
+          this.updateFormData.submittedDate = record.submittedDate;
+          this.updateFormData.dueamount = Number(50) * record.qty;
+
+          console.warn(this.updateFormData)
+
+          this._orderService.createDueEntry(this.updateFormData).subscribe(data=>{
+            if(data){
+              console.warn(data)
+            }
+          })
+
+      }
+    });
   }
 }

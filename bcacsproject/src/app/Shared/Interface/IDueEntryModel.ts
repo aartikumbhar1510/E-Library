@@ -1,4 +1,4 @@
-export class IorderDetails{
+export class IDueEntryModel{
     id:number=0;
     uid:number=0;
     bookid:number=0;
@@ -12,5 +12,4 @@ export class IorderDetails{
     qty:number=0;
     orderId:string="";
     dueamount:number=0;
-
 }

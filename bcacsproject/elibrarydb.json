@@ -63,7 +63,7 @@
       "author": "Smart Money",
       "edition": "4",
       "genres": "Finance",
-      "qty": 9,
+      "qty": 6,
       "status": "Available"
     },
     {
@@ -87,8 +87,8 @@
       "author": "Smart Money",
       "status": "Approved",
       "remark": "Your order got approved",
-      "issueDate": "2023-05-07T18:13:25.122Z",
-      "submittedDate": "2023-05-14T18:39:03.180Z",
+      "issueDate": "2023-04-30T18:13:25.122Z",
+      "submittedDate": "2023-05-08T18:39:03.180Z",
       "qty": 1,
       "orderId": "ICT7031"
     },
@@ -113,12 +113,13 @@
       "studentName": "Lahu Kumbhar",
       "bookName": "Python 5",
       "author": "Python",
-      "status": "Created",
-      "remark": "Waiting for approval.",
-      "issueDate": "2023-05-07T18:13:58.724Z",
-      "submittedDate": "2023-05-14T18:13:58.724Z",
+      "status": "Approved",
+      "remark": "Your order got approved",
+      "issueDate": "2023-05-01T18:13:58.724Z",
+      "submittedDate": "2023-05-08T19:30:09.837Z",
       "qty": 2,
-      "orderId": "PYT2361"
+      "orderId": "PYT2361",
+      "dueamount": 0
     },
     {
       "id": 4,
@@ -129,10 +130,25 @@
       "author": "Python",
       "status": "Approved",
       "remark": "Your order got approved",
-      "issueDate": "2023-05-07T18:40:13.175Z",
-      "submittedDate": "2023-05-14T18:44:52.686Z",
+      "issueDate": "2023-04-01T18:40:13.175Z",
+      "submittedDate": "2023-05-08T18:44:52.686Z",
       "qty": 2,
       "orderId": "PYT4101"
+    },
+    {
+      "id": 5,
+      "uid": 6,
+      "bookid": 2,
+      "studentName": "Lahu Kumbhar",
+      "bookName": "ICT Concept",
+      "author": "Smart Money",
+      "status": "Approved",
+      "remark": "Your order got approved",
+      "issueDate": "2023-04-30T19:03:44.571Z",
+      "submittedDate": "2023-05-08T18:12:36.055Z",
+      "qty": 3,
+      "orderId": "ICT7391",
+      "dueamount": 0
     }
   ],
   "stock": [
@@ -155,6 +171,53 @@
       "id": 4,
       "genres": "History",
       "stock": 70
+    }
+  ],
+  "studentDue": [
+    {
+      "id": 1,
+      "uid": 4,
+      "bookid": 2,
+      "studentName": "Aarti Kumbhar",
+      "bookName": "ICT Concept",
+      "author": "Smart Money",
+      "status": "Unpaid",
+      "remark": "Your order got approved",
+      "issueDate": "2023-04-30T18:13:25.122Z",
+      "submittedDate": "2023-05-08T18:39:03.180Z",
+      "qty": 1,
+      "orderId": "ICT7031",
+      "dueamount": 50
+    },
+    {
+      "id": 5,
+      "uid": 6,
+      "bookid": 2,
+      "studentName": "Lahu Kumbhar",
+      "bookName": "ICT Concept",
+      "author": "Smart Money",
+      "status": "Unpaid",
+      "remark": "Your order got approved",
+      "issueDate": "2023-04-30T19:03:44.571Z",
+      "submittedDate": "2023-05-08T18:12:36.055Z",
+      "qty": 3,
+      "orderId": "ICT7391",
+      "dueamount": 150
+    },
+    {
+      "id": 3,
+      "uid": 6,
+      "bookid": 4,
+      "studentName": "Lahu Kumbhar",
+      "bookName": "Python 5",
+      "author": "Python",
+      "status": "Unpaid",
+      "remark": "Your order got approved",
+      "issueDate": "2023-05-01T18:13:58.724Z",
+      "submittedDate": "2023-05-08T19:30:09.837Z",
+      "qty": 2,
+      "orderId": "PYT2361",
+      "dueamount": 100
     }
   ]
 }
