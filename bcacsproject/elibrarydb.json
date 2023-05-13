@@ -59,6 +59,14 @@
       "password": "admin",
       "role": "student",
       "id": 9
+    },
+    {
+      "email": "student1@gmail.com",
+      "name": "student1",
+      "uid": 0,
+      "password": "admin",
+      "role": "student",
+      "id": 10
     }
   ],
   "Books": [
@@ -109,7 +117,7 @@
       "author": "John Michell",
       "edition": "1",
       "genres": "Science",
-      "qty": 10,
+      "qty": 1,
       "status": "Available"
     }
   ],
@@ -142,6 +150,51 @@
       "submittedDate": "2023-05-19T09:38:21.838Z",
       "qty": 2,
       "orderId": "ICT631",
+      "dueamount": 0
+    },
+    {
+      "id": 3,
+      "uid": 10,
+      "bookid": 2,
+      "studentName": "student1",
+      "bookName": "ICT Concept",
+      "author": "Smart Money",
+      "status": "Created",
+      "remark": "Waiting for approval.",
+      "issueDate": "2023-05-13T01:45:08.712Z",
+      "submittedDate": "2023-05-20T01:45:08.712Z",
+      "qty": 1,
+      "orderId": "ICT221",
+      "dueamount": 0
+    },
+    {
+      "id": 4,
+      "uid": 10,
+      "bookid": 4,
+      "studentName": "student1",
+      "bookName": "Python for Data Analysis",
+      "author": "Wes Mckinney",
+      "status": "Approved",
+      "remark": "Your order got approved",
+      "issueDate": "2023-05-13T01:45:17.046Z",
+      "submittedDate": "2023-05-20T01:47:09.734Z",
+      "qty": 1,
+      "orderId": "PYT5541",
+      "dueamount": 0
+    },
+    {
+      "id": 5,
+      "uid": 10,
+      "bookid": 6,
+      "studentName": "student1",
+      "bookName": "Black hole",
+      "author": "John Michell",
+      "status": "Rejected",
+      "remark": "Requested book not available",
+      "issueDate": "2023-05-13T01:45:26.510Z",
+      "submittedDate": "2023-05-23T01:47:21.431Z",
+      "qty": 1,
+      "orderId": "BLA1091",
       "dueamount": 0
     }
   ],

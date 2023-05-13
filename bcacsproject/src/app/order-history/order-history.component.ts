@@ -92,8 +92,8 @@ export class OrderHistoryComponent {
 
     this._orderService.getOrderHistoryByUserID(this.loginUserId).subscribe((data: any[]) => {
       if (data) {
-        this.datalist = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == Constant.RETURN );
-        this.OrdersDataList = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == Constant.RETURN);
+        this.datalist = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == Constant.RETURN || x.status==Constant.REJECTED);
+        this.OrdersDataList = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == Constant.RETURN || x.status==Constant.REJECTED);
         this.calculateDueAndCreateNewEntry(data);
       } else {
         this.datalist = [];
