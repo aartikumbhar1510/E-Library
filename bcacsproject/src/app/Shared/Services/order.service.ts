@@ -62,4 +62,8 @@ export class OrderService {
       }))
   }
 
+  deletePaidOrder(id: number): Observable<any> {
+    return this._http.delete(`${this.baseURL}studentDue/${id}`);
+  }
+
 }

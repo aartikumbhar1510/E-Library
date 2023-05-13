@@ -10,5 +10,6 @@ export class Constant{
     public static DEFAULTCMT ="Waiting for approval.";
     public static PAID ="Paid";
     public static UNPAID ="Unpaid";
-    
+    public static RETURN ="Returned";
+    public static RETURNCMT ="You have returned the book.";
 }

@@ -27,6 +27,8 @@ export class OrderHistoryComponent {
   updateFormData: IorderDetails = new IorderDetails();
   isApproved: boolean = false;
   dueEntryModel : IDueEntryModel= new IDueEntryModel();
+  isReturnBook:boolean=false;
+  updateBookDataStock: Ibooks = new Ibooks();
   constructor(private _orderService: OrderService, private _booksService: BookService, private _fb: FormBuilder,
     private _rtr: Router) {
   }
@@ -64,10 +66,16 @@ export class OrderHistoryComponent {
 
   onStatusChange(statusValue: string) {
     if (statusValue === "Created") {
+      this.isReturnBook=true;
       return this.statusChangeValue = "badge bg-warning";
     } else if (statusValue === "Rejected") {
       return this.statusChangeValue = "badge bg-danger";
-    } else {
+    } else  if(statusValue === Constant.RETURN)
+    {
+      this.isReturnBook=true;
+      return this.statusChangeValue = "badge bg-warning";
+    }else{
+      this.isReturnBook=false;
       return this.statusChangeValue = "badge bg-success";
     }
   }
@@ -84,8 +92,8 @@ export class OrderHistoryComponent {
 
     this._orderService.getOrderHistoryByUserID(this.loginUserId).subscribe((data: any[]) => {
       if (data) {
-        this.datalist = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
-        this.OrdersDataList = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == "Rejected");
+        this.datalist = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == Constant.RETURN );
+        this.OrdersDataList = data.filter(x => x.status == "Created" || x.status == "Approved" || x.status == Constant.RETURN);
         this.calculateDueAndCreateNewEntry(data);
       } else {
         this.datalist = [];
@@ -172,5 +180,48 @@ export class OrderHistoryComponent {
 
       }
     });
+  }
+
+  onReturnBookAction(selectedRowData :any){
+    let todyasDate = new Date();
+    this.updateFormData.id = selectedRowData.id;
+
+    this.updateFormData.bookid = selectedRowData.bookid;
+    this.updateFormData.uid = selectedRowData.uid;
+    this.updateFormData.studentName = selectedRowData.studentName;
+    this.updateFormData.bookName = selectedRowData.bookName;
+    this.updateFormData.orderId = selectedRowData.orderId;
+    this.updateFormData.author = selectedRowData.author;
+    this.updateFormData.qty = Number(selectedRowData.qty);
+    this.updateFormData.status = Constant.RETURN
+    this.updateFormData.remark = Constant.RETURNCMT;
+    this.updateFormData.issueDate = selectedRowData.issueDate;
+    this.updateFormData.submittedDate = new Date();
+    console.warn(this.updateFormData);
+    this._orderService.updateOrder(this.updateFormData).subscribe((data: any) => {
+      if (data) {
+       
+        this.updateMasterStock(this.updateFormData.bookid, this.updateFormData.qty);
+        
+      }
+    });
+  }
+
+  updateMasterStock(bookid: number, qty: number) {
+
+    this._booksService.getStockByBookId(bookid).subscribe((data: Ibooks) => {
+      if (data) {
+        this.updateBookDataStock = data;
+        this.updateBookDataStock.qty =  data.qty + qty;
+
+        if (this.updateBookDataStock.qty != null) {
+          this._booksService.updateStock(this.updateBookDataStock).subscribe((data: any) => {
+            this.getOrderHistoryByUserID();
+          })
+        }
+      }
+    })
+
+
   }
 }

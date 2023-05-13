@@ -21,6 +21,7 @@ import{NgChartsModule} from 'ng2-charts';
 import { StudchartComponent } from './studchart/studchart.component';
 import { ToastrModule } from 'ngx-toastr';
 import { DuecalculationComponent } from './duecalculation/duecalculation.component';
+import { DueCollectionComponent } from './due-collection/due-collection.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { DuecalculationComponent } from './duecalculation/duecalculation.compone
     OrderHistoryComponent,
     OrderByPipe,
     StudchartComponent,
-    DuecalculationComponent
+    DuecalculationComponent,
+    DueCollectionComponent
   ],
   imports: [
     BrowserModule,
