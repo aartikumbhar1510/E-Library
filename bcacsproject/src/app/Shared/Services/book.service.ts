@@ -85,7 +85,7 @@ export class BookService {
   }
 
   getStockByBookId(bookid:any){
-    return this._http.get<any>(`${this.baseURL}Books?bookid=${bookid}`).pipe(map((data:Ibooks)=>{
+    return this._http.get<Ibooks>(`${this.baseURL}Books?bookid=${bookid}`).pipe(map((data:Ibooks)=>{
       return data;
     }))
   }
@@ -95,5 +95,11 @@ export class BookService {
   }
   deleteOrder(id: number): Observable<any> {
     return this._http.delete(`${this.baseURL}Books/${id}`);
+  }
+
+  getStockByshowBookId(bookid:any){
+    return this._http.get<Ibooks[]>(`${this.baseURL}Books?bookid=${bookid}`).pipe(map((data:Ibooks[])=>{
+      return data;
+    }))
   }
 }
