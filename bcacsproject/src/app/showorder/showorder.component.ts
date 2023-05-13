@@ -27,7 +27,7 @@ export class ShoworderComponent {
   updateFormData: IorderDetails = new IorderDetails();
   bookid: number = 2;
   qty: number = 2;
-  updateBookDataStock: any = new Ibooks();
+  updateBookDataStock: Ibooks = new Ibooks();
 
   constructor(private _adservice: AdmindashboardService,
     private _orderService: OrderService, private _rtr: Router, private _bookService: BookService) {
@@ -147,15 +147,16 @@ export class ShoworderComponent {
 
   updateMasterStock(bookid: number, qty: number) {
 
-    this._bookService.getStockByBookId(bookid).subscribe((data: any) => {
+    this._bookService.getStockByshowBookId(bookid).subscribe((data: Ibooks[]) => {
       if (data) {
-        this.updateBookDataStock.id = data.id;
-        this.updateBookDataStock.bookid = data.bookid;
-        this.updateBookDataStock.title = data.title;
-        this.updateBookDataStock.author = data.author;
-        this.updateBookDataStock.edition = data.edition;
-        this.updateBookDataStock.genres = data.genres;
-        this.updateBookDataStock.qty = Number(data.qty) + Number(qty);
+        console.warn(data)
+        this.updateBookDataStock.id = data[0].id;
+        this.updateBookDataStock.bookid = data[0].bookid;
+        this.updateBookDataStock.title = data[0].title;
+        this.updateBookDataStock.author = data[0].author;
+        this.updateBookDataStock.edition = data[0].edition;
+        this.updateBookDataStock.genres = data[0].genres;
+        this.updateBookDataStock.qty = Number(data[0].qty) - Number(qty);
         if(this.updateBookDataStock.qty >0){
         this.updateBookDataStock.status =  'Available';
         }else{
