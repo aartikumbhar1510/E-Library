@@ -208,10 +208,10 @@ export class OrderHistoryComponent {
 
   updateMasterStock(bookid: number, qty: number) {
 
-    this._booksService.getStockByBookId(bookid).subscribe((data: Ibooks) => {
+    this._booksService.getStockByshowBookId(bookid).subscribe((data: Ibooks[]) => {
       if (data) {
-        this.updateBookDataStock = data;
-        this.updateBookDataStock.qty =  data.qty + qty;
+        this.updateBookDataStock = data[0];
+        this.updateBookDataStock.qty =  data[0].qty + qty;
 
         if (this.updateBookDataStock.qty != null) {
           this._booksService.updateStock(this.updateBookDataStock).subscribe((data: any) => {
