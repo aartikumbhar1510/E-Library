@@ -174,10 +174,10 @@
       "studentName": "student1",
       "bookName": "Python for Data Analysis",
       "author": "Wes Mckinney",
-      "status": "Approved",
-      "remark": "Your order got approved",
+      "status": "Returned",
+      "remark": "You have returned the book.",
       "issueDate": "2023-05-13T01:45:17.046Z",
-      "submittedDate": "2023-05-20T01:47:09.734Z",
+      "submittedDate": "2023-05-13T01:52:37.240Z",
       "qty": 1,
       "orderId": "PYT5541",
       "dueamount": 0
@@ -220,5 +220,21 @@
       "stock": 70
     }
   ],
-  "studentDue": []
+  "studentDue": [
+    {
+      "id": 4,
+      "uid": 10,
+      "bookid": 4,
+      "studentName": "student1",
+      "bookName": "Python for Data Analysis",
+      "author": "Wes Mckinney",
+      "status": "Unpaid",
+      "remark": "You have returned the book.",
+      "issueDate": "2023-05-13T01:45:17.046Z",
+      "submittedDate": "2023-05-13T01:52:37.240Z",
+      "qty": 1,
+      "orderId": "PYT5541",
+      "dueamount": 50
+    }
+  ]
 }
