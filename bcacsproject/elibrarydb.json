@@ -23,7 +23,7 @@
       "author": "Smart Money",
       "edition": "1",
       "genres": "Finance",
-      "qty": 14,
+      "qty": 15,
       "status": "Available"
     },
     {
@@ -75,10 +75,10 @@
       "studentName": "Aarti Kumbhar",
       "bookName": "ICT Concept",
       "author": "Smart Money",
-      "status": "Approved",
-      "remark": "Your order got approved",
+      "status": "Returned",
+      "remark": "You have returned the book.",
       "issueDate": "2023-05-13T03:34:17.771Z",
-      "submittedDate": "2023-05-20T03:49:57.021Z",
+      "submittedDate": "2023-05-13T03:52:48.604Z",
       "qty": 1,
       "orderId": "ICT4551",
       "dueamount": 0
@@ -106,5 +106,21 @@
       "stock": 70
     }
   ],
-  "studentDue": []
+  "studentDue": [
+    {
+      "id": 1,
+      "uid": 2,
+      "bookid": 2,
+      "studentName": "Aarti Kumbhar",
+      "bookName": "ICT Concept",
+      "author": "Smart Money",
+      "status": "Unpaid",
+      "remark": "You have returned the book.",
+      "issueDate": "2023-05-13T03:34:17.771Z",
+      "submittedDate": "2023-05-13T03:52:48.604Z",
+      "qty": 1,
+      "orderId": "ICT4551",
+      "dueamount": 50
+    }
+  ]
 }
