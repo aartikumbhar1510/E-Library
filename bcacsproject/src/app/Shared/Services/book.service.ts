@@ -24,8 +24,8 @@ export class BookService {
     }));
   }
 
-  editBookDetails(dataParam: Ibooks, bookid: any) {
-    return this._http.put<Ibooks>(this.baseURL + 'Books/' + bookid, dataParam)
+  editBookDetails(dataParam: Ibooks) {
+    return this._http.put<Ibooks>(this.baseURL + 'Books/' + dataParam.id, dataParam)
       .pipe(map((data: any) => {
         return data;
       }))
@@ -84,8 +84,8 @@ export class BookService {
     }))
   }
 
-  getStockByBookId(inputParam:any){
-    return this._http.get<any>(`${this.baseURL}Books/${inputParam}`).pipe(map((data:Ibooks)=>{
+  getStockByBookId(bookid:any){
+    return this._http.get<any>(`${this.baseURL}Books?bookid=${bookid}`).pipe(map((data:Ibooks)=>{
       return data;
     }))
   }

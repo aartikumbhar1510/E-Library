@@ -11,6 +11,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PagenotfoundComponent } from './Shared/Error/pagenotfound/pagenotfound.component';
 import { ShoworderComponent } from './showorder/showorder.component';
 import { DuecalculationComponent } from './duecalculation/duecalculation.component';
+import { DueCollectionComponent } from './due-collection/due-collection.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,9 @@ const routes: Routes = [
   },
   {
     path: 'due-calculation', component:DuecalculationComponent,canActivate:[AuthGuard]
+  },
+  {
+    path:'due-collection',component:DueCollectionComponent,canActivate:[AuthGuard]
   },
   {
     path: '**',

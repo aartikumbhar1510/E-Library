@@ -27,7 +27,7 @@ export class ShoworderComponent {
   updateFormData: IorderDetails = new IorderDetails();
   bookid: number = 2;
   qty: number = 2;
-  updateBookDataStock: Ibooks = new Ibooks();
+  updateBookDataStock: any = new Ibooks();
 
   constructor(private _adservice: AdmindashboardService,
     private _orderService: OrderService, private _rtr: Router, private _bookService: BookService) {
@@ -119,7 +119,7 @@ export class ShoworderComponent {
     this.updateFormData.status = Constant.REJECTED
     this.updateFormData.remark = Constant.REJECTEDCMT;
     this.updateFormData.issueDate = selectedRowData.issueDate;;
-    this.updateFormData.submittedDate = new Date(todyasDate.setDate(todyasDate.getDate() + 0));
+    this.updateFormData.submittedDate = new Date(todyasDate.setDate(todyasDate.getDate() + 10));
     console.warn(this.updateFormData);
     this._orderService.updateOrder(this.updateFormData).subscribe((data: any) => {
       if (data) {
@@ -147,10 +147,20 @@ export class ShoworderComponent {
 
   updateMasterStock(bookid: number, qty: number) {
 
-    this._bookService.getStockByBookId(bookid).subscribe((data: Ibooks) => {
+    this._bookService.getStockByBookId(bookid).subscribe((data: any) => {
       if (data) {
-        this.updateBookDataStock = data;
-        this.updateBookDataStock.qty =  data.qty - qty;
+        this.updateBookDataStock.id = data.id;
+        this.updateBookDataStock.bookid = data.bookid;
+        this.updateBookDataStock.title = data.title;
+        this.updateBookDataStock.author = data.author;
+        this.updateBookDataStock.edition = data.edition;
+        this.updateBookDataStock.genres = data.genres;
+        this.updateBookDataStock.qty = Number(data.qty) + Number(qty);
+        if(this.updateBookDataStock.qty >0){
+        this.updateBookDataStock.status =  'Available';
+        }else{
+          this.updateBookDataStock.status='Unavailable'
+        }
 
         if (this.updateBookDataStock.qty != null) {
           this._bookService.updateStock(this.updateBookDataStock).subscribe(data => {

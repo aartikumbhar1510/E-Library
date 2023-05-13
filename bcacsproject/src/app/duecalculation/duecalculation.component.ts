@@ -10,47 +10,62 @@ import { Constant } from '../Shared/Interface/constant';
 })
 export class DuecalculationComponent implements OnInit {
 
-duecalaulationList:IorderDetails[]|undefined;
-searchText :string='';
-statusChangeValue:string='';
-datalist!:IorderDetails[];
-loginUserId:any;
+  duecalaulationList: IorderDetails[] | undefined;
+  searchText: string = '';
+  statusChangeValue: string = '';
+  datalist!: IorderDetails[];
+  loginUserId: any;
+  dueOrderData: IorderDetails= new IorderDetails();
 
-constructor(private _orderService:OrderService) {
-  
-}
+  constructor(private _orderService: OrderService) {
 
-ngOnInit(): void {
-  this.loginUserId = localStorage.getItem('uid');
-  this.getOrderHistoryByUserID();
-}
+  }
 
-getOrderHistoryByUserID() {
+  ngOnInit(): void {
+    this.loginUserId = localStorage.getItem('uid');
+    this.getOrderHistoryByUserID();
+  }
 
-  this._orderService.getDueOrderHistoryByUserID(this.loginUserId).subscribe((data: any[]) => {
-    if (data) {
-      this.datalist = data.filter(x => x.status == Constant.UNPAID || x.status == Constant.PAID );
-      this.duecalaulationList = data.filter(x => x.status == Constant.UNPAID || x.status == Constant.PAID);
-    
+  getOrderHistoryByUserID() {
+
+    this._orderService.getDueOrderHistoryByUserID(this.loginUserId).subscribe((data: any[]) => {
+      if (data) {
+        this.datalist = data.filter(x => x.status == Constant.UNPAID || x.status == Constant.PAID );
+        this.duecalaulationList = data.filter(x => x.status == Constant.UNPAID || x.status == Constant.PAID );
+
+      } else {
+        this.datalist = [];
+      }
+    })
+  }
+
+  onDueSearch(searchString: string) {
+    this.searchText = searchString;
+    this.duecalaulationList = this.datalist?.filter((item) => {
+      const regex = new RegExp(this.searchText, "i");
+      return regex.test(item.studentName) || regex.test(item.bookName) || regex.test(item.author) || regex.test(item.status);
+    })
+  }
+
+  onStatusChange(statusValue: string) {
+    if (statusValue === Constant.PAID) {
+      return this.statusChangeValue = "badge bg-warning";
     } else {
-      this.datalist = [];
+      return this.statusChangeValue = "badge bg-danger";
     }
-  })
-}
+  }
 
-onDueSearch(searchString :string){
-  this.searchText = searchString;
-  this.duecalaulationList = this.datalist?.filter((item) => {
-    const regex = new RegExp(this.searchText, "i");
-    return regex.test(item.studentName) || regex.test(item.bookName) || regex.test(item.author) || regex.test(item.status);
-  })
-}
+  onViewDetailAction(selectedRowData: any) {
+    this.dueOrderData = selectedRowData;
+    console.warn(this.dueOrderData);
+  }
 
-onStatusChange(statusValue: string) {
-  if (statusValue === Constant.PAID) {
-    return this.statusChangeValue = "badge bg-warning";
-  } else  {
-    return this.statusChangeValue = "badge bg-danger";
-  } 
-}
+  onDeleteAction(selectedRowData: any) {
+    this._orderService.deletePaidOrder(selectedRowData.id).subscribe((data: any) => {
+      if (data) {
+        this.getOrderHistoryByUserID();
+       
+      }
+    })
+  }
 }

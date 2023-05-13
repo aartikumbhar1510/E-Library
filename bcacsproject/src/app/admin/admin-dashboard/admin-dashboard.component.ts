@@ -39,6 +39,7 @@ export class AdminDashboardComponent implements OnInit {
   stockModel: IStockModel[] | undefined;
   stockModelData: IStockModel = new IStockModel();
   viewBookData: Ibooks = new Ibooks();
+  selectedRowData: Ibooks = new Ibooks();
   constructor(private _adservice: AdmindashboardService,
     private _booksService: BookService,
     private _fb: FormBuilder, private _rtr: Router, private _actRoute: ActivatedRoute) {
@@ -91,13 +92,13 @@ export class AdminDashboardComponent implements OnInit {
     this.IBookData.author = this.frmBook.value.author;
     this.IBookData.edition = this.frmBook.value.edition;
     this.IBookData.genres = this.frmBook.value.genres;
-    this.IBookData.qty =Number( this.frmBook.value.qty);
+    this.IBookData.qty = Number(this.frmBook.value.qty);
     this.IBookData.status = this.frmBook.value.status;
 
     this._booksService.addNewBookToLibrary(this.IBookData).subscribe(data => {
       if (data) {
 
-        this.closeAndRedirect();        
+        this.closeAndRedirect();
         this.getAvailableBooks();
 
       }
@@ -120,6 +121,7 @@ export class AdminDashboardComponent implements OnInit {
   onEditBook(book: any) {
     this.isShow = false;
     this.isEdit = true;
+    this.selectedRowData = book;
     this.frmBook.controls['bookid'].setValue(book.bookid);
     this.frmBook.controls['title'].setValue(book.title);
     this.frmBook.controls['author'].setValue(book.author);
@@ -131,7 +133,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onUpdateAction() {
-
+    this.IBookData.id = this.selectedRowData.id;
     this.IBookData.bookid = this.frmBook.value.bookid;
     this.IBookData.title = this.frmBook.value.title;
     this.IBookData.author = this.frmBook.value.author;
@@ -140,10 +142,10 @@ export class AdminDashboardComponent implements OnInit {
     this.IBookData.qty = Number(this.frmBook.value.qty);
     this.IBookData.status = this.frmBook.value.status;
 
-    this._booksService.editBookDetails(this.IBookData, this.IBookData.bookid).subscribe(data => {
+    this._booksService.editBookDetails(this.IBookData).subscribe(data => {
       if (data) {
 
-        this.closebutton.nativeElement.click();       
+        this.closebutton.nativeElement.click();
         this.closeAndRedirect();
         this.getAvailableBooks();
       }
@@ -177,7 +179,7 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-  resetForAndClearData(){
+  resetForAndClearData() {
     this.frmBook = this._fb.group({
       bookid: [''],
       title: [''],
