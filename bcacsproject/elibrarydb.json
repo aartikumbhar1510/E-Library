@@ -1,72 +1,18 @@
-{
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
+{  
   "user": [
     {
-      "id": 2,
+      "id": 1,
       "name": "admin",
       "email": "admin@gmail.com",
       "password": "admin",
       "role": "admin"
     },
     {
-      "id": 4,
+      "id": 2,
       "name": "Aarti Kumbhar",
       "email": "aartikumbhar152003@gmail.com",
       "password": "admin",
       "role": "student"
-    },
-    {
-      "id": 5,
-      "name": "admin",
-      "email": "admin@gmail.com",
-      "password": "admin",
-      "role": "admin"
-    },
-    {
-      "email": "lahukumbhar73@gmail.com",
-      "name": "Lahu Kumbhar",
-      "uid": 0,
-      "password": "admin",
-      "role": "student",
-      "id": 6
-    },
-    {
-      "email": "demouser@gmail.com",
-      "name": "demo user",
-      "uid": 0,
-      "password": "admin",
-      "role": "student",
-      "id": 7
-    },
-    {
-      "email": "admin1@gmail.com",
-      "name": "admin1",
-      "uid": 0,
-      "password": "admin",
-      "role": "admin",
-      "id": 8
-    },
-    {
-      "email": "vidyatalekar@gmail.com",
-      "name": "Vidhya Talekar",
-      "uid": 0,
-      "password": "admin",
-      "role": "student",
-      "id": 9
-    },
-    {
-      "email": "student1@gmail.com",
-      "name": "student1",
-      "uid": 0,
-      "password": "admin",
-      "role": "student",
-      "id": 10
     }
   ],
   "Books": [
@@ -121,83 +67,7 @@
       "status": "Available"
     }
   ],
-  "BooksOrder": [
-    {
-      "id": 1,
-      "uid": 4,
-      "bookid": 2,
-      "studentName": "Aarti Kumbhar",
-      "bookName": "ICT Concept",
-      "author": "Smart Money",
-      "status": "Rejected",
-      "remark": "Requested book not available",
-      "issueDate": "2023-05-12T09:27:29.874Z",
-      "submittedDate": "2023-05-23T09:27:48.974Z",
-      "qty": 1,
-      "orderId": "ICT8501",
-      "dueamount": 0
-    },
-    {
-      "id": 2,
-      "uid": 4,
-      "bookid": 2,
-      "studentName": "Aarti Kumbhar",
-      "bookName": "ICT Concept",
-      "author": "Smart Money",
-      "status": "Approved",
-      "remark": "Your order got approved",
-      "issueDate": "2023-05-12T09:38:07.220Z",
-      "submittedDate": "2023-05-19T09:38:21.838Z",
-      "qty": 2,
-      "orderId": "ICT631",
-      "dueamount": 0
-    },
-    {
-      "id": 3,
-      "uid": 10,
-      "bookid": 2,
-      "studentName": "student1",
-      "bookName": "ICT Concept",
-      "author": "Smart Money",
-      "status": "Returned",
-      "remark": "You have returned the book.",
-      "issueDate": "2023-05-13T01:45:08.712Z",
-      "submittedDate": "2023-05-13T01:56:12.178Z",
-      "qty": 1,
-      "orderId": "ICT221",
-      "dueamount": 50
-    },
-    {
-      "id": 4,
-      "uid": 10,
-      "bookid": 4,
-      "studentName": "student1",
-      "bookName": "Python for Data Analysis",
-      "author": "Wes Mckinney",
-      "status": "Returned",
-      "remark": "You have returned the book.",
-      "issueDate": "2023-05-13T01:45:17.046Z",
-      "submittedDate": "2023-05-13T01:52:37.240Z",
-      "qty": 1,
-      "orderId": "PYT5541",
-      "dueamount": 0
-    },
-    {
-      "id": 5,
-      "uid": 10,
-      "bookid": 6,
-      "studentName": "student1",
-      "bookName": "Black hole",
-      "author": "John Michell",
-      "status": "Rejected",
-      "remark": "Requested book not available",
-      "issueDate": "2023-05-13T01:45:26.510Z",
-      "submittedDate": "2023-05-23T01:47:21.431Z",
-      "qty": 1,
-      "orderId": "BLA1091",
-      "dueamount": 0
-    }
-  ],
+  "BooksOrder": [],
   "stock": [
     {
       "id": 1,
@@ -220,36 +90,5 @@
       "stock": 70
     }
   ],
-  "studentDue": [
-    {
-      "id": 4,
-      "uid": 10,
-      "bookid": 4,
-      "studentName": "student1",
-      "bookName": "Python for Data Analysis",
-      "author": "Wes Mckinney",
-      "status": "Unpaid",
-      "remark": "You have returned the book.",
-      "issueDate": "2023-05-13T01:45:17.046Z",
-      "submittedDate": "2023-05-13T01:52:37.240Z",
-      "qty": 1,
-      "orderId": "PYT5541",
-      "dueamount": 50
-    },
-    {
-      "id": 3,
-      "uid": 10,
-      "bookid": 2,
-      "studentName": "student1",
-      "bookName": "ICT Concept",
-      "author": "Smart Money",
-      "status": "Unpaid",
-      "remark": "You have returned the book.",
-      "issueDate": "2023-05-13T01:45:08.712Z",
-      "submittedDate": "2023-05-13T01:56:12.178Z",
-      "qty": 1,
-      "orderId": "ICT221",
-      "dueamount": 50
-    }
-  ]
+  "studentDue": []
 }

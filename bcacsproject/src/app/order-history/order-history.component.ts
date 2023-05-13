@@ -155,7 +155,7 @@ export class OrderHistoryComponent {
       const diffInMs = Math.abs(today.getTime() - date1.getTime());
       const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
-      if (diffInDays < 1 && (record.status!=Constant.CREATED || record.status!=Constant.REJECTED)) {
+      if (diffInDays < 1 && (record.status!=Constant.CREATED || record.status!=Constant.REJECTED || record.status!=Constant.RETURN)) {
         this.updateFormData.id = record.id;
           this.updateFormData.bookid = record.bookid;
           this.updateFormData.uid = record.uid;
