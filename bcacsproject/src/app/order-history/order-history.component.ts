@@ -185,7 +185,6 @@ export class OrderHistoryComponent {
   onReturnBookAction(selectedRowData :any){
     let todyasDate = new Date();
     this.updateFormData.id = selectedRowData.id;
-
     this.updateFormData.bookid = selectedRowData.bookid;
     this.updateFormData.uid = selectedRowData.uid;
     this.updateFormData.studentName = selectedRowData.studentName;
@@ -202,7 +201,7 @@ export class OrderHistoryComponent {
       if (data) {
        
         this.updateMasterStock(this.updateFormData.bookid, this.updateFormData.qty);
-        
+        this.getOrderHistoryByUserID();
       }
     });
   }

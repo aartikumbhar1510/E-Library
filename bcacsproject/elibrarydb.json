@@ -159,13 +159,13 @@
       "studentName": "student1",
       "bookName": "ICT Concept",
       "author": "Smart Money",
-      "status": "Created",
-      "remark": "Waiting for approval.",
+      "status": "Returned",
+      "remark": "You have returned the book.",
       "issueDate": "2023-05-13T01:45:08.712Z",
-      "submittedDate": "2023-05-20T01:45:08.712Z",
+      "submittedDate": "2023-05-13T01:56:12.178Z",
       "qty": 1,
       "orderId": "ICT221",
-      "dueamount": 0
+      "dueamount": 50
     },
     {
       "id": 4,
@@ -174,10 +174,10 @@
       "studentName": "student1",
       "bookName": "Python for Data Analysis",
       "author": "Wes Mckinney",
-      "status": "Approved",
-      "remark": "Your order got approved",
+      "status": "Returned",
+      "remark": "You have returned the book.",
       "issueDate": "2023-05-13T01:45:17.046Z",
-      "submittedDate": "2023-05-20T01:47:09.734Z",
+      "submittedDate": "2023-05-13T01:52:37.240Z",
       "qty": 1,
       "orderId": "PYT5541",
       "dueamount": 0
@@ -220,5 +220,36 @@
       "stock": 70
     }
   ],
-  "studentDue": []
+  "studentDue": [
+    {
+      "id": 4,
+      "uid": 10,
+      "bookid": 4,
+      "studentName": "student1",
+      "bookName": "Python for Data Analysis",
+      "author": "Wes Mckinney",
+      "status": "Unpaid",
+      "remark": "You have returned the book.",
+      "issueDate": "2023-05-13T01:45:17.046Z",
+      "submittedDate": "2023-05-13T01:52:37.240Z",
+      "qty": 1,
+      "orderId": "PYT5541",
+      "dueamount": 50
+    },
+    {
+      "id": 3,
+      "uid": 10,
+      "bookid": 2,
+      "studentName": "student1",
+      "bookName": "ICT Concept",
+      "author": "Smart Money",
+      "status": "Unpaid",
+      "remark": "You have returned the book.",
+      "issueDate": "2023-05-13T01:45:08.712Z",
+      "submittedDate": "2023-05-13T01:56:12.178Z",
+      "qty": 1,
+      "orderId": "ICT221",
+      "dueamount": 50
+    }
+  ]
 }
