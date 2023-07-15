@@ -53,17 +53,7 @@
       "author": "Asim Hussain",
       "edition": "5",
       "genres": "Technology",
-      "qty": 10,
-      "status": "Available"
-    },
-    {
-      "id": 5,
-      "bookid": 6,
-      "title": "Black hole",
-      "author": "John Michell",
-      "edition": "1",
-      "genres": "Science",
-      "qty": 1,
+      "qty": 9,
       "status": "Available"
     }
   ],
@@ -71,16 +61,46 @@
     {
       "id": 1,
       "uid": 2,
+      "bookid": 5,
+      "studentName": "Aarti Kumbhar",
+      "bookName": "Angular 5: From Theory to Practice",
+      "author": "Asim Hussain",
+      "status": "Approved",
+      "remark": "Your order got approved",
+      "issueDate": "2023-05-13T08:32:34.207Z",
+      "submittedDate": "2023-07-08T14:51:12.033Z",
+      "qty": 1,
+      "orderId": "ANG9571",
+      "dueamount": 0
+    },
+    {
+      "id": 2,
+      "uid": 2,
+      "bookid": 4,
+      "studentName": "Aarti Kumbhar",
+      "bookName": "Python for Data Analysis",
+      "author": "Wes Mckinney",
+      "status": "Rejected",
+      "remark": "Requested book not available",
+      "issueDate": "2023-07-01T14:52:08.314Z",
+      "submittedDate": "2023-07-11T14:52:45.275Z",
+      "qty": 2,
+      "orderId": "PYT7041",
+      "dueamount": 0
+    },
+    {
+      "id": 3,
+      "uid": 2,
       "bookid": 2,
       "studentName": "Aarti Kumbhar",
       "bookName": "ICT Concept",
       "author": "Smart Money",
-      "status": "Returned",
-      "remark": "You have returned the book.",
-      "issueDate": "2023-05-13T03:34:17.771Z",
-      "submittedDate": "2023-05-13T03:52:48.604Z",
-      "qty": 1,
-      "orderId": "ICT4551",
+      "status": "Created",
+      "remark": "Waiting for approval.",
+      "issueDate": "2023-07-01T14:53:21.965Z",
+      "submittedDate": "2023-07-08T14:53:21.965Z",
+      "qty": 2,
+      "orderId": "ICT8161",
       "dueamount": 0
     }
   ],
@@ -106,21 +126,5 @@
       "stock": 70
     }
   ],
-  "studentDue": [
-    {
-      "id": 1,
-      "uid": 2,
-      "bookid": 2,
-      "studentName": "Aarti Kumbhar",
-      "bookName": "ICT Concept",
-      "author": "Smart Money",
-      "status": "Unpaid",
-      "remark": "You have returned the book.",
-      "issueDate": "2023-05-13T03:34:17.771Z",
-      "submittedDate": "2023-05-13T03:52:48.604Z",
-      "qty": 1,
-      "orderId": "ICT4551",
-      "dueamount": 50
-    }
-  ]
+  "studentDue": []
 }

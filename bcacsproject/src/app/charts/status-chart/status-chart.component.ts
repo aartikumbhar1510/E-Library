@@ -167,6 +167,7 @@ export class StatusChartComponent implements OnInit {
           }
         },
       };
+      
       const mychart1 = new Chart(this.ctx, this.config);
     })
   }
